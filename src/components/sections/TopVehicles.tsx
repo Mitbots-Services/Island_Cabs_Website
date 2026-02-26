@@ -50,7 +50,7 @@ export function TopVehicles() {
           }
         >
           <Image
-            src="/vehicles/suv.jpeg"
+            src="/images/vehicles/suv.jpeg"
             alt="SUV"
             fill
             className="object-cover transition-transform duration-500 hover:scale-105"
@@ -72,7 +72,7 @@ export function TopVehicles() {
           }
         >
           <Image
-            src="/vehicles/luxury.jpeg"
+            src="/images/vehicles/luxury.jpeg"
             alt="Luxury"
             fill
             className="object-cover transition-transform duration-500 hover:scale-105"
