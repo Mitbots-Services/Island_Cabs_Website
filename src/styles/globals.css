@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   BRAND COLOR VARIABLES
+================================= */
+
+:root {
+    --primary: #0d276d;
+    --secondary: #6482b9;
+    --text: #111827;
+    --bg: #f8fafc;
+    --accent: #d6a94e;
+}
+
+/* ===============================
+   CUSTOM UTILITY CLASSES
+================================= */
+
+.primary {
+    background-color: var(--primary);
+}
+
+.secondary {
+    background-color: var(--secondary);
+}
+
+.bg {
+    background-color: var(--bg);
+}
+
+.accent {
+    background-color: var(--accent);
+}
+
+.text-main {
+    color: var(--text);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.text-accent {
+    color: var(--accent);
+}
