@@ -82,7 +82,7 @@ export default function ContactClient() {
                         className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl"
                     >
                         <Image
-                            src="./images/Hero/Contact-Us.jpg"
+                            src="/images/Hero/Contact-Us.jpg"
                             alt="Contact Island Cabs"
                             fill
                             priority

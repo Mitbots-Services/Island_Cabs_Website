@@ -95,7 +95,7 @@ export default function AboutPage() {
                         className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl"
                     >
                         <Image
-                            src="./images/Hero/Trusted.png"
+                            src="/images/Hero/Trusted.png"
                             alt="Island Cabs Travel Service"
                             fill
                             priority
@@ -146,7 +146,7 @@ export default function AboutPage() {
                         className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl"
                     >
                         <Image
-                            src="./images/Hero/Company.jpg"
+                            src="/images/Hero/Company.jpg"
                             alt="Contact Island Cabs"
                             fill
                             priority

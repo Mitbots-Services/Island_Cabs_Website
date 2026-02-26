@@ -70,7 +70,7 @@ export default function HireCabsPage() {
                         className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl"
                     >
                         <Image
-                            src="./images/vehicles/Cabs.webp"
+                            src="/images/vehicles/Cabs.webp"
                             alt="Premium Cab Service"
                             fill
                             priority
@@ -96,10 +96,10 @@ export default function HireCabsPage() {
                     <div className="mt-16 grid md:grid-cols-4 gap-10">
 
                         {[
-                            { name: "Sedan", image: "./images/vehicles/Sedan.jpeg", passengers: "3–5 Passengers" },
-                            { name: "SUV", image: "./images/vehicles/Suv.jpeg", passengers: "5–7 Passengers" },
-                            { name: "Luxury", image: "./images/vehicles/Luxury.jpeg", passengers: "3–20 Passengers" },
-                            { name: "Tempo Traveller", image: "./images/vehicles/TempoTraveller.jpeg", passengers: "9–26 Passengers" },
+                            { name: "Sedan", image: "/images/vehicles/Sedan.jpeg", passengers: "3–5 Passengers" },
+                            { name: "SUV", image: "/images/vehicles/Suv.jpeg", passengers: "5–7 Passengers" },
+                            { name: "Luxury", image: "/images/vehicles/Luxury.jpeg", passengers: "3–20 Passengers" },
+                            { name: "Tempo Traveller", image: "/images/vehicles/TempoTraveller.jpeg", passengers: "9–26 Passengers" },
                         ].map((vehicle, i) => (
 
                             <motion.div
@@ -172,7 +172,7 @@ export default function HireCabsPage() {
                     {/* RIGHT MAP IMAGE */}
                     <div className="relative h-[380px] rounded-2xl overflow-hidden shadow-lg bg-white p-6">
                         <Image
-                            src="./images/Hero/SouthMap2.jpg"
+                            src="/images/Hero/SouthMap2.jpg"
                             alt="Service Locations Map"
                             fill
                             className="object-contain"

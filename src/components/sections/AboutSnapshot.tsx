@@ -29,7 +29,7 @@ export function AboutSnapshot() {
 
                     <div className="relative w-full h-full rounded-xl overflow-hidden bg-white">
                         <Image
-                            src="./images/Hero/Trusted.png"
+                            src="/images/Hero/Trusted.png"
                             alt="Trusted Travel Partner"
                             fill
                             className="object-cover"

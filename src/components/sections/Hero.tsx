@@ -146,7 +146,7 @@ export default function Hero() {
                         className="w-[180%] md:w-[200%] relative z-10"
                     >
                         <Image
-                            src="./images/Hero/Car.png"
+                            src="/images/Hero/Car.png"
                             alt="Premium Cab Service in Tamil Nadu"
                             width={1900}
                             height={1200}

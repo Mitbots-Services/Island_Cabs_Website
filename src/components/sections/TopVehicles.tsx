@@ -28,7 +28,7 @@ export function TopVehicles() {
           }
         >
           <Image
-            src="./images/vehicles/sedan.jpeg"
+            src="/images/vehicles/sedan.jpeg"
             alt="Sedan"
             fill
             className="object-cover transition-transform duration-500 hover:scale-105"
@@ -50,7 +50,7 @@ export function TopVehicles() {
           }
         >
           <Image
-            src="./images/vehicles/suv.jpeg"
+            src="/vehicles/suv.jpeg"
             alt="SUV"
             fill
             className="object-cover transition-transform duration-500 hover:scale-105"
@@ -72,7 +72,7 @@ export function TopVehicles() {
           }
         >
           <Image
-            src="./images/vehicles/luxury.jpeg"
+            src="/vehicles/luxury.jpeg"
             alt="Luxury"
             fill
             className="object-cover transition-transform duration-500 hover:scale-105"

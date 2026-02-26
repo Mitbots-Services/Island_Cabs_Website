@@ -14,7 +14,7 @@ export default function FleetPreview() {
                     {[1, 2, 3].map((car) => (
                         <div key={car} className="bg-white rounded-2xl shadow-lg p-6">
                             <Image
-                                src="./images/hero/Car.png"
+                                src="/images/hero/Car.png"
                                 alt="Cab"
                                 width={400}
                                 height={250}
