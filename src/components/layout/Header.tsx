@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
 
@@ -13,9 +14,18 @@ export default function Header() {
                 <div className="flex justify-start">
                     <Link
                         href="/"
-                        className="text-2xl font-bold text-[#0D276D] tracking-wide"
+                        className="flex items-center gap-2"
                     >
-                        Island Cabs
+                        <Image
+                            src="/images/Hero/IslandLogo.png"
+                            alt="Island Cabs Logo"
+                            width={40}
+                            height={40}
+                            className="object-contain"
+                        />
+                        <span className="text-2xl font-bold text-[#0D276D] tracking-wide">
+                            Island Cabs
+                        </span>
                     </Link>
                 </div>
 

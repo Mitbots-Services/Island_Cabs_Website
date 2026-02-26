@@ -77,7 +77,7 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5 }}
-                            className="mt-10 flex gap-5 items-center"
+                            className="mt-10 flex gap-4 items-center"
                         >
                             <Link
                                 href="/contact-us"
@@ -99,7 +99,7 @@ export default function Hero() {
                 {/* RIGHT CAR */}
                 <motion.div
                     initial={{ x: 500, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    animate={{ x: 0, opacity: 1}}
                     transition={{
                         duration: 1,
                         ease: [0.25, 1, 0.5, 1],
@@ -107,42 +107,8 @@ export default function Hero() {
                     className="relative flex justify-center md:-mr-20"
                 >
 
-                    {/* Circle 1 */}
-                    <motion.div
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-                        className="absolute w-[420px] h-[420px] 
-                   rounded-full 
-                   bg-gradient-to-br 
-                   from-[#0D276D]/30 
-                   to-[#6482B9]/20 
-                   blur-3xl 
-                   -z-10"
-                        style={{ right: "10%", top: "15%" }}
-                    />
-
-                    {/* Circle 2 */}
-                    <motion.div
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 1, duration: 1, ease: "easeOut" }}
-                        className="absolute w-[300px] h-[300px] 
-                   rounded-full 
-                   bg-[#D6A94E]/20 
-                   blur-2xl 
-                   -z-10"
-                        style={{ right: "25%", top: "35%" }}
-                    />
-
                     {/* Floating Car */}
                     <motion.div
-                        animate={{ y: [0, -10, 0] }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 5,
-                            ease: "easeInOut",
-                        }}
                         className="w-[180%] md:w-[200%] relative z-10"
                     >
                         <Image
