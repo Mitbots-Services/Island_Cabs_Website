@@ -37,7 +37,7 @@ export default function HireCabsPage() {
                             Explore
                         </span>
 
-                        <h1 className="mt-4 text-5xl font-bold text-[#111827] leading-tight">
+                        <h1 className="mt-4 text-3xl md:text-5xl font-bold text-[#111827] leading-tight">
                             Reliable Travel Solutions
                             <br />
                             Across Tamil Nadu
@@ -49,7 +49,7 @@ export default function HireCabsPage() {
                             and seamless travel experiences.
                         </p>
 
-                        <div className="mt-8 flex gap-6">
+                        <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-6">
                             <div className="text-[#0D276D] font-semibold">
                                 ✔ Corporate Travel
                             </div>
@@ -96,10 +96,10 @@ export default function HireCabsPage() {
                     <div className="mt-16 grid md:grid-cols-4 gap-10">
 
                         {[
-                            { name: "Sedan", image: "/images/vehicles/Sedan.jpeg", passengers: "3–5 Passengers" },
-                            { name: "SUV", image: "/images/vehicles/Suv.jpeg", passengers: "5–7 Passengers" },
-                            { name: "Luxury", image: "/images/vehicles/Luxury.jpeg", passengers: "3–20 Passengers" },
-                            { name: "Tempo Traveller", image: "/images/vehicles/TempoTraveller.jpeg", passengers: "9–26 Passengers" },
+                            { name: "Sedan", image: "/images/vehicles/Sedan.jpeg", passengers: "Max 5 Passengers" },
+                            { name: "SUV", image: "/images/vehicles/Suv.jpeg", passengers: "Max 7 Passengers" },
+                            { name: "Luxury", image: "/images/vehicles/Luxury.jpeg", passengers: "Max 20 Passengers" },
+                            { name: "Tempo Traveller", image: "/images/vehicles/TempoTraveller.jpeg", passengers: "Max 26 Passengers" },
                         ].map((vehicle, i) => (
 
                             <motion.div
@@ -155,17 +155,13 @@ export default function HireCabsPage() {
                         </h2>
 
                         <p className="mt-6 text-gray-600 text-lg leading-relaxed max-w-xl">
-                            Island Cabs proudly serves major cities and key travel hubs
-                            across Tamil Nadu. From bustling metropolitan centers to
-                            culturally rich destinations, we ensure reliable and
-                            professionally managed cab services wherever you travel.
+                            Island Cabs is proudly headquartered in Rameshwaram, providing reliable and professionally managed cab services across Tamil Nadu. From temple town transfers to long-distance travel, we ensure safe and seamless journeys for every customer.
+                            Our primary operations are based in Rameshwaram, with active service hubs in Madurai and Kanyakumari. We also provide outstation and intercity travel across key destinations in South India — delivering dependable travel experiences wherever you go.
                         </p>
 
                         <p className="mt-6 text-gray-600 text-lg leading-relaxed max-w-xl">
-                            Our operational network includes Chennai, Coimbatore,
-                            Madurai, Trichy, Salem, Pondicherry and surrounding
-                            regions — delivering seamless travel experiences
-                            throughout South India.
+                            Island Cabs is a trusted taxi service company based in Rameshwaram, Tamil Nadu, specializing in airport transfers, outstation travel and corporate cab services. We proudly serve pilgrims, tourists and business travelers with safe and professional transportation solutions.
+                            With operational hubs in Madurai and Kanyakumari, we provide seamless cab services across Tamil Nadu and major South Indian destinations, ensuring comfortable and reliable journeys every time.
                         </p>
                     </div>
 

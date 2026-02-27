@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "../ui/Button";
+import Link from "next/link";
 
 export function AboutSnapshot() {
     return (
@@ -18,10 +19,11 @@ export function AboutSnapshot() {
                         Our professional drivers and well-maintained fleet ensure
                         comfort in every ride.
                     </p>
-
-                    <Button className="mt-6 bg-[#0D276D] text-white px-6 py-3 rounded-lg hover:bg-[#6482B9]">
-                        Learn More
-                    </Button>
+                    <Link href="/about-us">
+                        <Button className="mt-6 bg-[#0D276D] text-white px-6 py-3 rounded-lg hover:bg-[#6482B9]">
+                            Learn More
+                        </Button>
+                    </Link>
                 </div>
 
                 {/* RIGHT IMAGE */}

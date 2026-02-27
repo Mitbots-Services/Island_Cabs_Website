@@ -233,15 +233,38 @@ export default function ContactClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4 }}
                                 viewport={{ once: true }}
-                                className="bg-[#F8FAFC] p-8 rounded-xl shadow-sm"
+                                className="bg-[#F8FAFC] rounded-xl shadow-sm overflow-hidden"
                             >
-                                <h3 className="text-xl font-semibold text-main">
-                                    {faq.question}
-                                </h3>
+                                {/* Question Button */}
+                                <button
+                                    onClick={() =>
+                                        setOpenIndex(openIndex === index ? null : index)
+                                    }
+                                    className="w-full text-left p-6 flex justify-between items-center"
+                                >
+                                    <h3 className="text-lg md:text-xl font-semibold text-[#111827]">
+                                        {faq.question}
+                                    </h3>
 
-                                <p className="mt-4 text-gray-600 leading-relaxed">
-                                    {faq.answer}
-                                </p>
+                                    <span className="text-[#0D276D] text-2xl font-bold">
+                                        {openIndex === index ? "−" : "+"}
+                                    </span>
+                                </button>
+
+                                {/* Answer */}
+                                <motion.div
+                                    initial={false}
+                                    animate={{
+                                        height: openIndex === index ? "auto" : 0,
+                                        opacity: openIndex === index ? 1 : 0,
+                                    }}
+                                    transition={{ duration: 0.3 }}
+                                    className="px-6 overflow-hidden"
+                                >
+                                    <p className="pb-6 text-gray-600 leading-relaxed">
+                                        {faq.answer}
+                                    </p>
+                                </motion.div>
                             </motion.div>
                         ))}
 

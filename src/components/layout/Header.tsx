@@ -49,10 +49,10 @@ export default function Header() {
 
                     {/* Contact Us Button */}
                     <Link
-                        href="/contact-us"
+                        href="/book-now"
                         className="bg-[#0D276D] text-white text-xs md:text-base px-3 md:px-6 py-1.5 md:py-2 rounded-lg shadow-md hover:bg-[#6482B9] transition"
                     >
-                        Contact Us
+                        Book
                     </Link>
 
                     {/* Mobile Menu Icon */}

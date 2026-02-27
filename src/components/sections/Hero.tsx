@@ -18,38 +18,10 @@ export default function Hero() {
   via-[#b7c6e2] 
   to-[#85a1f6]
 ">
-
-            {/* Background */}
-            {/* <div className="absolute inset-0 -z-10 overflow-hidden">
-                <Image
-                    src="/images/Hero/SouthIn.png"
-                    alt="Premium Cab Highway"
-                    fill
-                    priority
-                    className="object-cover scale-110 blur-[2px]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
-
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0D276D]/30 to-transparent" />
-            </div> */}
-
             <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-12">
 
                 {/* LEFT SIDE */}
-                <div className="relative">
-
-                    {/* Liquid Glass Panel */}
-                    {/* <div className="
-            absolute 
-            -inset-6 
-            rounded-2xl 
-            bg-white/10 
-            backdrop-blur-xl 
-            border 
-            border-white/20 
-            shadow-[0_8px_32px_rgba(0,0,0,0.25)]
-          " /> */}
-
+                <div className="relative">        
                     <div className="relative z-10">
 
                         <motion.h1
