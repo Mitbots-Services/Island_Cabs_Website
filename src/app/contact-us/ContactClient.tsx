@@ -1,12 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
 
 export default function ContactClient() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+    const formRef = useRef<HTMLFormElement>(null);
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const sendEmail = async (e: React.FormEvent) => {
+        e.preventDefault();
 
+        if (!formRef.current) return;
+
+        setLoading(true);
+        setSuccess(false);
+
+        try {
+            await emailjs.sendForm(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+                formRef.current,
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+            );
+
+            formRef.current.reset();
+            setSuccess(true);
+        } catch (error) {
+            console.error("EmailJS Error:", error);
+        }
+
+        setLoading(false);
+    };
     const faqs = [
         {
             name: "Rahul S.",
@@ -93,10 +120,12 @@ export default function ContactClient() {
                 </div>
             </section>
 
-            {/* CONTACT FORM */}
+            {/* CONTACT FORM (EmailJS Connected) */}
             <section className="pb-20 pt-10">
                 <div className="max-w-4xl mx-auto px-6">
-                    <motion.div
+                    <motion.form
+                        ref={formRef}
+                        onSubmit={sendEmail}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
@@ -105,32 +134,49 @@ export default function ContactClient() {
                     >
                         <input
                             type="text"
+                            name="user_name"
                             placeholder="Full Name"
+                            required
                             className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0D276D]"
                         />
 
                         <input
                             type="email"
+                            name="user_email"
                             placeholder="Email Address"
+                            required
                             className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0D276D]"
                         />
 
                         <input
                             type="text"
+                            name="location"
                             placeholder="Location"
                             className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0D276D]"
                         />
 
                         <textarea
                             rows={4}
+                            name="message"
                             placeholder="Tell us about your requirement"
+                            required
                             className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-[#0D276D]"
                         />
 
-                        <button className="bg-[#0D276D] text-white w-full py-3 rounded-lg hover:bg-[#6482B9] transition-all duration-300">
-                            Submit Message
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="bg-[#0D276D] text-white w-full py-3 rounded-lg hover:bg-[#6482B9] transition-all duration-300"
+                        >
+                            {loading ? "Sending..." : "Submit Message"}
                         </button>
-                    </motion.div>
+
+                        {success && (
+                            <p className="text-green-600 text-center">
+                                ✅ Message sent successfully!
+                            </p>
+                        )}
+                    </motion.form>
                 </div>
             </section>
 

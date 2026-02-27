@@ -34,7 +34,7 @@ export default function HireCabsPage() {
                         transition={{ duration: 0.6 }}
                     >
                         <span className="text-[#D6A94E] font-semibold uppercase tracking-wider text-sm">
-                            Hire Cabs
+                            Explore
                         </span>
 
                         <h1 className="mt-4 text-5xl font-bold text-[#111827] leading-tight">
