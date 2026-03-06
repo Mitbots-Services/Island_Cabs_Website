@@ -1,6 +1,11 @@
 import { ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "accent" | "outline";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "outline"
+  | "outlineBlue";
 
 interface ButtonProps {
   children: ReactNode;
@@ -19,24 +24,45 @@ export default function Button({
   type = "button",
   ...props
 }: ButtonProps) {
-  const baseStyles =
-    "inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out";
+  const base =
+    "relative group inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold overflow-hidden transition-all duration-300";
 
   const variants: Record<ButtonVariant, string> = {
-    primary: "primary text-white",
-    secondary: "secondary text-white",
-    accent: "accent text-main",
-    outline: "border-2 border-primary text-primary bg-transparent",
+    primary:
+      "primary border-2 border-[var(--primary)] text-white hover:bg-[var(--secondary)] hover:text-white hover:border-[var(--secondary)]",
+
+    secondary:
+      "secondary text-white hover:text-[var(--primary)] hover:bg-[var(--bg)]",
+
+    accent: "accent text-main hover:primary hover:text-white",
+
+    outline:
+      "border-2 border-primary text-[var(--bg)] bg-transparent hover:border-[var(--primary)]",
+    outlineBlue:
+      "border-2 border-[var(--primary)] text-[var(--primary)] bg-transparent hover:border-[var(--primary)]",
   };
+
+  const width = fullWidth ? "w-full" : "";
 
   return (
     <button
       type={type}
-      className={`${baseStyles} ${variants[variant]} ${fullWidth ? "w-full" : ""
-        } ${className}`}
+      className={`${base} ${variants[variant]} ${width} ${className}`}
       {...props}
     >
-      {children}
+      {(variant === "outline" || variant === "outlineBlue") && (
+        <span className="absolute inset-0 primary -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0" />
+      )}
+
+      <span
+        className={`relative z-10 flex items-center gap-2 transition-colors duration-300 ${
+          variant === "outline" || variant === "outlineBlue"
+            ? "group-hover:text-white"
+            : ""
+        }`}
+      >
+        {children}
+      </span>
     </button>
   );
 }

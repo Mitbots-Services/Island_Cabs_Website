@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title:
     "Island Cabs | Rameshwaram Taxi Service – Cab to Madurai & Kanyakumari",
   description:
-    "Island Cabs offers trusted taxi services in Rameshwaram with 6+ years of experience. Book cabs for Rameshwaram temple tours, Madurai trips, Kanyakumari travel and South India tours.",
+    "Island Cabs offers trusted taxi services in Rameshwaram with 6+ years of experience. Book cabs for Rameshwaram temple tours, Madurai trips, Kanyakumari travel and South Tamil Nadu tours.",
   keywords: [
     "Island Cabs",
     "Rameshwaram taxi service",
@@ -19,16 +19,16 @@ export const metadata: Metadata = {
     "Rameshwaram to Madurai taxi",
     "Rameshwaram to Kanyakumari taxi",
     "Rameshwaram temple tour taxi",
-    "South India taxi tours",
+    "South Tamil Nadu taxi tours",
   ],
   alternates: {
-    canonical: "https://islandcabs.com",
+    canonical: "https://islandcabsrameshwaram.in",
   },
   openGraph: {
     title: "Island Cabs | Rameshwaram Taxi Service",
     description:
       "Reliable taxi services in Rameshwaram for temple tours, Madurai and Kanyakumari travel.",
-    url: "https://islandcabs.com",
+    url: "https://islandcabsrameshwaram.in",
     siteName: "Island Cabs",
     locale: "en_IN",
     type: "website",

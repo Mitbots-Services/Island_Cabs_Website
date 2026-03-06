@@ -3,10 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import Handshake from "../../assets/Handshake.webp";
+import Button from "../ui/Button";
 
 export default function AboutHero() {
   return (
-    <section className="relative pt-32 pb-24 bg-gradient-to-br from-[#f8fafc] via-[#b7c6e2] to-[#85a1f6]">
+    <section className="relative pt-32 pb-24 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
         <div>
           <motion.span
@@ -20,7 +22,7 @@ export default function AboutHero() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-4 text-5xl md:text-6xl font-bold leading-tight"
+            className="mt-4 text-3xl md:text-5xl font-bold leading-tight font-heading"
           >
             Trusted Taxi Service
             <br />
@@ -38,11 +40,8 @@ export default function AboutHero() {
           </motion.p>
 
           <motion.div className="mt-10">
-            <Link
-              href="/contact-us"
-              className="bg-[#0D276D] text-white px-8 py-3 rounded-full font-semibold"
-            >
-              Contact Us
+            <Link href="/contact-us">
+              <Button variant="primary">Contact Us</Button>
             </Link>
           </motion.div>
         </div>
@@ -53,7 +52,7 @@ export default function AboutHero() {
           className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl"
         >
           <Image
-            src="/images/Hero/Handshake.jpeg"
+            src={Handshake}
             alt="Island Cabs taxi service"
             fill
             priority

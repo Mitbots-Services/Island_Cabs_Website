@@ -8,7 +8,7 @@ export default function CTASection() {
                     Ready To Travel?
                 </h2>
                 <p className="text-lg mb-8 text-gray-200">
-                    Experience reliable and safe cab services across South India.
+                    Experience reliable and safe cab services across South Tamil Nadu.
                 </p>
                 <button className="bg-[#d6a94e] px-8 py-3 rounded-lg font-semibold text-black">
                     Book Your Ride Now

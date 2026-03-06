@@ -1,5 +1,5 @@
 import AboutHero from "@/components/about/AboutHero";
-import DriversSection from "@/components/about/DriversSection";
+import Button from "@/components/ui/Button";
 import FeatureCard from "@/components/ui/FeatureCard";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -18,20 +18,42 @@ export default function AboutPage() {
 
       {/* COMPANY STATS */}
       <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
-          <div className="p-10 rounded-2xl shadow-sm bg-[#F5F8FF]">
-            <h3 className="text-4xl font-bold text-[#0D276D]">6+</h3>
-            <p className="mt-2 text-gray-600">Years Experience</p>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+          {/* CARD */}
+          <div className="group relative p-10 rounded-2xl bg-[var(--bg)] border border-[color-mix(in_srgb,var(--secondary)_25%,transparent)] hover:-translate-y-1 hover:shadow-lg transition">
+            <h3 className="text-5xl font-bold text-[var(--primary)] text-center">
+              6+
+            </h3>
+
+            <div className="w-10 h-[2px] bg-[var(--secondary)] mx-auto my-4"></div>
+
+            <p className="text-center text-[var(--text)]/70">
+              Years Experience
+            </p>
           </div>
 
-          <div className="p-10 rounded-2xl shadow-sm bg-[#F5F8FF]">
-            <h3 className="text-4xl font-bold text-[#0D276D]">1000+</h3>
-            <p className="mt-2 text-gray-600">Happy Travelers</p>
+          {/* CARD */}
+          <div className="group relative p-10 rounded-2xl bg-[var(--bg)] border border-[color-mix(in_srgb,var(--secondary)_25%,transparent)] hover:-translate-y-1 hover:shadow-lg transition">
+            <h3 className="text-5xl font-bold text-[var(--primary)] text-center">
+              1000+
+            </h3>
+
+            <div className="w-10 h-[2px] bg-[var(--secondary)] mx-auto my-4"></div>
+
+            <p className="text-center text-[var(--text)]/70">Happy Travelers</p>
           </div>
 
-          <div className="p-10 rounded-2xl shadow-sm bg-[#F5F8FF]">
-            <h3 className="text-4xl font-bold text-[#0D276D]">24/7</h3>
-            <p className="mt-2 text-gray-600">Customer Support</p>
+          {/* CARD */}
+          <div className="group relative p-10 rounded-2xl bg-[var(--bg)] border border-[color-mix(in_srgb,var(--secondary)_25%,transparent)] hover:-translate-y-1 hover:shadow-lg transition">
+            <h3 className="text-5xl font-bold text-[var(--primary)] text-center">
+              24/7
+            </h3>
+
+            <div className="w-10 h-[2px] bg-[var(--secondary)] mx-auto my-4"></div>
+
+            <p className="text-center text-[var(--text)]/70">
+              Customer Support
+            </p>
           </div>
         </div>
       </section>
@@ -97,76 +119,82 @@ export default function AboutPage() {
       {/* SERVICE AREAS */}
       <section className="py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6">
+          {/* Heading */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-[#111827]">
+            <h2 className="text-4xl md:text-5xl font-bold text-[var(--text)]">
               Areas We Serve
             </h2>
 
-            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-4 text-[var(--text)]/70 max-w-2xl mx-auto">
               Island Cabs offers reliable taxi services from Rameshwaram to
               popular destinations across Tamil Nadu for tourists and pilgrims.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-            {/* Rameshwaram */}
-            <div className="group bg-gradient-to-br from-[#F5F8FF] to-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
-              <div className="w-14 h-14 rounded-xl bg-[#0D276D] flex items-center justify-center text-white text-xl">
+            {/* CARD */}
+            <div className="group relative bg-[var(--bg)] rounded-2xl p-8 border border-[color-mix(in_srgb,var(--secondary)_20%,transparent)] hover:shadow-lg transition">
+              {/* vertical route line */}
+              <div className="absolute left-6 top-8 bottom-8 w-[2px] bg-[var(--secondary)]/40"></div>
+
+              {/* location marker */}
+              <div className="relative z-10 w-12 h-12 rounded-full bg-[var(--primary)] flex items-center justify-center text-white text-lg shadow-md group-hover:scale-110 transition">
                 📍
               </div>
 
-              <h3 className="mt-6 font-semibold text-lg text-[#111827]">
+              <h3 className="mt-6 font-semibold text-lg text-[var(--text)]">
                 Rameshwaram
               </h3>
 
-              <p className="mt-2 text-gray-600 text-sm">
+              <p className="mt-2 text-[var(--text)]/70 text-sm">
                 Local temple tours and sightseeing taxi services.
               </p>
             </div>
 
-            {/* Madurai */}
-            <div className="group bg-gradient-to-br from-[#F5F8FF] to-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
-              <div className="w-14 h-14 rounded-xl bg-[#0D276D] flex items-center justify-center text-white text-xl">
+            <div className="group relative bg-[var(--bg)] rounded-2xl p-8 border border-[color-mix(in_srgb,var(--secondary)_20%,transparent)] hover:shadow-lg transition">
+              <div className="absolute left-6 top-8 bottom-8 w-[2px] bg-[var(--secondary)]/40"></div>
+
+              <div className="relative z-10 w-12 h-12 rounded-full bg-[var(--primary)] flex items-center justify-center text-white text-lg shadow-md group-hover:scale-110 transition">
                 🛕
               </div>
 
-              <h3 className="mt-6 font-semibold text-lg text-[#111827]">
+              <h3 className="mt-6 font-semibold text-lg text-[var(--text)]">
                 Madurai
               </h3>
 
-              <p className="mt-2 text-gray-600 text-sm">
-                Comfortable taxi rides to Meenakshi Amman Temple and city
-                attractions.
+              <p className="mt-2 text-[var(--text)]/70 text-sm">
+                Taxi rides to Meenakshi Amman Temple and city attractions.
               </p>
             </div>
 
-            {/* Kanyakumari */}
-            <div className="group bg-gradient-to-br from-[#F5F8FF] to-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
-              <div className="w-14 h-14 rounded-xl bg-[#0D276D] flex items-center justify-center text-white text-xl">
+            <div className="group relative bg-[var(--bg)] rounded-2xl p-8 border border-[color-mix(in_srgb,var(--secondary)_20%,transparent)] hover:shadow-lg transition">
+              <div className="absolute left-6 top-8 bottom-8 w-[2px] bg-[var(--secondary)]/40"></div>
+
+              <div className="relative z-10 w-12 h-12 rounded-full bg-[var(--primary)] flex items-center justify-center text-white text-lg shadow-md group-hover:scale-110 transition">
                 🌅
               </div>
 
-              <h3 className="mt-6 font-semibold text-lg text-[#111827]">
+              <h3 className="mt-6 font-semibold text-lg text-[var(--text)]">
                 Kanyakumari
               </h3>
 
-              <p className="mt-2 text-gray-600 text-sm">
-                Travel to the southernmost tip of India with scenic coastal
-                routes.
+              <p className="mt-2 text-[var(--text)]/70 text-sm">
+                Scenic coastal travel to the southernmost tip of India.
               </p>
             </div>
 
-            {/* Dhanushkodi */}
-            <div className="group bg-gradient-to-br from-[#F5F8FF] to-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition">
-              <div className="w-14 h-14 rounded-xl bg-[#0D276D] flex items-center justify-center text-white text-xl">
+            <div className="group relative bg-[var(--bg)] rounded-2xl p-8 border border-[color-mix(in_srgb,var(--secondary)_20%,transparent)] hover:shadow-lg transition">
+              <div className="absolute left-6 top-8 bottom-8 w-[2px] bg-[var(--secondary)]/40"></div>
+
+              <div className="relative z-10 w-12 h-12 rounded-full bg-[var(--primary)] flex items-center justify-center text-white text-lg shadow-md group-hover:scale-110 transition">
                 🌊
               </div>
 
-              <h3 className="mt-6 font-semibold text-lg text-[#111827]">
+              <h3 className="mt-6 font-semibold text-lg text-[var(--text)]">
                 Dhanushkodi
               </h3>
 
-              <p className="mt-2 text-gray-600 text-sm">
+              <p className="mt-2 text-[var(--text)]/70 text-sm">
                 Explore the famous ghost town and pristine beach near
                 Rameshwaram.
               </p>
@@ -174,8 +202,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <DriversSection />
 
       {/* CTA */}
       <section className="py-24 bg-[#0D276D] text-white text-center">
@@ -188,19 +214,13 @@ export default function AboutPage() {
             Send a booking request or call us directly to arrange your trip.
           </p>
 
-          <div className="mt-10 flex justify-center gap-6">
-            <Link
-              href="/contact-us"
-              className="bg-white text-[#0D276D] px-8 py-3 rounded-full font-semibold"
-            >
-              Send Booking Request
+          <div className="mt-10 flex justify-center gap-6 flex-wrap">
+            <Link href="/book-now">
+              <Button variant="accent">Send Booking Request</Button>
             </Link>
 
-            <a
-              href="tel:+91XXXXXXXXXX"
-              className="border border-white px-8 py-3 rounded-full"
-            >
-              Call Now
+            <a href="tel:+918056867468">
+              <Button variant="secondary">Call Now</Button>
             </a>
           </div>
         </div>

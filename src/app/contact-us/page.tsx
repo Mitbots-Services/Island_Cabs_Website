@@ -59,7 +59,7 @@ const localBusinessSchema = {
     addressRegion: "Tamil Nadu",
     addressCountry: "India",
   },
-  telephone: "+91XXXXXXXXXX",
+  telephone: "+918056867468",
 };
 
 export default function ContactPage() {
