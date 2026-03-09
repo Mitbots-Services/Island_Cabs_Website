@@ -22,7 +22,7 @@ export function AboutSnapshot() {
           </p>
           <Link href="/about-us">
             <Button variant="primary" className="mt-8">
-              Learn More
+              About Island Cabs
             </Button>
           </Link>
         </div>
