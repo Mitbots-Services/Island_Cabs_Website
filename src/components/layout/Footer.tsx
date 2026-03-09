@@ -32,19 +32,29 @@ export default function Footer() {
 
           <ul className="space-y-3 text-white/80 text-sm">
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/" className="hover:text-[var(--accent)]">
+                Home
+              </Link>
             </li>
             <li>
-              <Link href="/about-us">About Us</Link>
+              <Link href="/about-us" className="hover:text-[var(--accent)]">
+                About Us
+              </Link>
             </li>
             <li>
-              <Link href="/cab-services">Cab Services</Link>
+              <Link href="/cab-services" className="hover:text-[var(--accent)]">
+                Cab Services
+              </Link>
             </li>
             <li>
-              <Link href="/contact-us">Contact</Link>
+              <Link href="/contact-us" className="hover:text-[var(--accent)]">
+                Contact
+              </Link>
             </li>
             <li>
-              <Link href="/book-now">Book Taxi</Link>
+              <Link href="/book-now" className="hover:text-[var(--accent)]">
+                Book Taxi
+              </Link>
             </li>
           </ul>
         </div>
@@ -55,19 +65,28 @@ export default function Footer() {
 
           <ul className="space-y-3 text-white/80 text-sm">
             <li>
-              <Link href="/rameshwaram-to-madurai-taxi">
+              <Link
+                href="/rameshwaram-to-madurai-taxi"
+                className="hover:text-[var(--accent)]"
+              >
                 Rameshwaram to Madurai Taxi
               </Link>
             </li>
 
             <li>
-              <Link href="/rameshwaram-to-kanyakumari-taxi">
+              <Link
+                href="/rameshwaram-to-kanyakumari-taxi"
+                className="hover:text-[var(--accent)]"
+              >
                 Rameshwaram to Kanyakumari Taxi
               </Link>
             </li>
 
             <li>
-              <Link href="/rameshwaram-to-dhanushkodi-taxi">
+              <Link
+                href="/rameshwaram-to-dhanushkodi-taxi"
+                className="hover:text-[var(--accent)]"
+              >
                 Rameshwaram to Dhanushkodi Taxi
               </Link>
             </li>
