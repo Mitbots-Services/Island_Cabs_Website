@@ -2,6 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import type { Metadata } from "next";
 import { Cinzel, Manrope, Poppins } from "next/font/google";
+import Script from "next/script";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
@@ -130,6 +131,20 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-6LKHVH1DH3"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6LKHVH1DH3');
+          `}
+        </Script>
 
         <Header />
 
