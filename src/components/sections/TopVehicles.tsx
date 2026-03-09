@@ -3,7 +3,7 @@ import Link from "next/link";
 import Hatchback from "../../assets/Hatchback.webp";
 import Luxury from "../../assets/Luxury.webp";
 import Sedan from "../../assets/Sedan.webp";
-import SUV from "../../assets/Suv.webp";
+import SUV from "../../assets/SUV.webp";
 
 export function TopVehicles() {
   return (
