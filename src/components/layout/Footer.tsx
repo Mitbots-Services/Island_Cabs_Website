@@ -118,17 +118,34 @@ export default function Footer() {
                 href="https://mitbots.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-white transition"
+                className="inline-block py-1 underline hover:text-white transition"
               >
                 Mitbots
               </a>
             </p>
           </div>
 
-          <div className="flex gap-6">
-            <Link href="/terms-and-conditions">Terms</Link>
-            <Link href="/privacy-policy">Privacy</Link>
-            <Link href="/cancellation-policy">Cancellation</Link>
+          <div className="flex gap-6 mt-4 md:mt-0">
+            <Link
+              href="/terms-and-conditions"
+              className="inline-block py-2 hover:text-white transition"
+            >
+              Terms
+            </Link>
+
+            <Link
+              href="/privacy-policy"
+              className="inline-block py-2 hover:text-white transition"
+            >
+              Privacy
+            </Link>
+
+            <Link
+              href="/cancellation-policy"
+              className="inline-block py-2 hover:text-white transition"
+            >
+              Cancellation
+            </Link>
           </div>
         </div>
       </div>

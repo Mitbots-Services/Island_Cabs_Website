@@ -129,6 +129,9 @@ export default function Header() {
         {/* MOBILE MENU */}
         <button
           className="md:hidden text-[#0D276D]"
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={26} /> : <Menu size={26} />}
