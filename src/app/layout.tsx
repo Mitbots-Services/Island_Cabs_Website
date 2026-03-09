@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Island Cabs",
     images: [
       {
-        url: "/images/Hero/Car.png",
+        url: "/icon.png",
         width: 1200,
         height: 630,
         alt: "Island Cabs Rameshwaram Taxi Service",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Island Cabs | Taxi Service in Rameshwaram",
     description:
       "Professional taxi services in Rameshwaram for temple tours and outstation travel across Tamil Nadu.",
-    images: ["/images/Hero/Car.png"],
+    images: ["/icon.png"],
   },
 
   alternates: {
@@ -82,7 +82,7 @@ export default function RootLayout({
     "@type": "LocalBusiness",
     name: "Island Cabs",
     url: "https://islandcabsrameshwaram.in",
-    logo: "https://islandcabsrameshwaram.in/images/Hero/IslandLogo.png",
+    logo: "https://islandcabsrameshwaram.in/icon.png",
     description:
       "Island Cabs is a professional taxi service in Rameshwaram offering temple tours, sightseeing and outstation taxi services across Tamil Nadu.",
     telephone: "+918056867468",
@@ -104,7 +104,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "Island Cabs",
     url: "https://islandcabsrameshwaram.in",
-    logo: "https://islandcabsrameshwaram.in/images/Hero/IslandLogo.png",
+    logo: "https://islandcabsrameshwaram.in/icon.png",
     sameAs: [],
   };
 

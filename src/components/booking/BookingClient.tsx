@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
+import Hatchback from "../../assets/Hatchback.webp";
+import Luxury from "../../assets/Luxury.webp";
+import Sedan from "../../assets/Sedan.webp";
+import SUV from "../../assets/SUV.webp";
+
 export default function BookingClient() {
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -22,24 +27,24 @@ export default function BookingClient() {
 
   const vehicles = [
     {
+      name: "Hatchback",
+      image: Hatchback,
+      capacity: "4 Seats",
+    },
+    {
       name: "Sedan",
-      image: "/images/vehicles/Sedan.jpeg",
-      capacity: "Up to 4 passengers",
+      image: Sedan,
+      capacity: "4 Seats",
     },
     {
       name: "SUV",
-      image: "/images/vehicles/Suv.jpeg",
-      capacity: "Up to 6 passengers",
-    },
-    {
-      name: "Luxury",
-      image: "/images/vehicles/Luxury.jpeg",
-      capacity: "Premium comfort",
+      image: SUV,
+      capacity: "6-7 Seats",
     },
     {
       name: "Tempo Traveller",
-      image: "/images/vehicles/TempoTraveller.jpeg",
-      capacity: "Group travel",
+      image: Luxury,
+      capacity: "12+ Seats",
     },
   ];
 
