@@ -4,6 +4,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Logo from "../../assets/IslandLogo.webp";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function Header() {
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/images/Hero/IslandLogo.png"
+            src={Logo}
             alt="Island Cabs Rameshwaram Taxi Service"
             width={40}
             height={40}
