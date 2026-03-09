@@ -61,11 +61,13 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700"],
   variable: "--font-manrope",
 });
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-poppins",
 });
+
 const cinzel = Cinzel({
   subsets: ["latin"],
   weight: ["600"],
@@ -131,7 +133,8 @@ export default function RootLayout({
 
         <Header />
 
-        {children}
+        {/* MAIN LANDMARK */}
+        <main id="main-content">{children}</main>
 
         <Footer />
       </body>
