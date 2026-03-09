@@ -37,7 +37,8 @@ export default function PopularRoutes() {
 
       <div className="max-w-4xl mx-auto mt-16 px-6 divide-y divide-[color-mix(in_srgb,var(--secondary)_25%,transparent)]">
         {routes.map((route, i) => (
-          <div
+          <Link
+            href={route.link}
             key={i}
             className="py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
           >
@@ -49,13 +50,10 @@ export default function PopularRoutes() {
               <p className="text-[var(--text)]/70 mt-1">{route.description}</p>
             </div>
 
-            <Link
-              href={route.link}
-              className="text-sm font-semibold text-[var(--primary)] hover:text-[var(--accent)] transition"
-            >
+            <div className="text-sm font-semibold text-[var(--primary)] hover:text-[var(--accent)] transition">
               View Details →
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
     </section>

@@ -106,18 +106,33 @@ export default function ContactClient() {
       <section className="pt-32 pb-24 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <span className="text-[#D6A94E] font-semibold uppercase text-sm tracking-wider">
+            <motion.span
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-[#D6A94E] font-semibold uppercase text-sm tracking-wider"
+            >
               Contact Island Cabs
-            </span>
+            </motion.span>
 
-            <h1 className="mt-4 text-4xl md:text-5xl font-bold font-heading">
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mt-4 text-4xl md:text-5xl font-bold font-heading"
+            >
               Book Your Taxi in Rameshwaram
-            </h1>
+            </motion.h1>
 
-            <p className="mt-6 text-gray-600 max-w-lg text-lg">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="mt-6 text-gray-600 max-w-lg text-lg"
+            >
               Need a taxi for temple tours, sightseeing or outstation travel?
               Contact Island Cabs for reliable and comfortable journeys.
-            </p>
+            </motion.p>
           </div>
 
           <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl">

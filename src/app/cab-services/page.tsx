@@ -1,3 +1,4 @@
+import CabHero from "@/components/cabs/CabHero";
 import VehicleRoadCarousel from "@/components/cabs/VehicleRoadCarousel";
 import Button from "@/components/ui/Button";
 import { Car, Headphones, MessageSquare, ShieldCheck } from "lucide-react";
@@ -18,39 +19,7 @@ export default function CabServicesPage() {
       {/* HERO */}
       <section className="pt-32 pb-24 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <span className="text-[#D6A94E] font-semibold uppercase tracking-wider text-sm">
-              Island Cabs
-            </span>
-
-            <h1 className="mt-4 text-4xl md:text-5xl font-bold font-heading text-[#111827] leading-tight">
-              Cab Services in Rameshwaram
-            </h1>
-
-            <p className="mt-6 text-gray-600 max-w-lg text-lg">
-              Island Cabs provides professional taxi services for temple tours,
-              local sightseeing and long-distance travel across Tamil Nadu. Our
-              experienced drivers and well maintained vehicles ensure safe and
-              comfortable journeys.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-6 text-[#0D276D] font-semibold">
-              <span>✔ Temple Tours</span>
-              <span>✔ Airport Transfers</span>
-              <span>✔ Outstation Travel</span>
-            </div>
-
-            {/* CTA */}
-            <div className="mt-10 flex gap-6 flex-wrap">
-              <Link href="/contact-us">
-                <Button variant="primary">Send Booking Request</Button>
-              </Link>
-
-              <a href="tel:+918056867468">
-                <Button variant="outlineBlue">Call Now</Button>
-              </a>
-            </div>
-          </div>
+          <CabHero />
 
           <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl">
             <Image

@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import Button from "../ui/Button";
+import AnimatedHeroContent from "./RouteHeroContent";
 
 interface Props {
   title: string;
@@ -24,23 +25,7 @@ export default function RoutePage({
       {/* HERO */}
       <section className="relative py-32 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#111827]">
-              {title}
-            </h1>
-
-            <p className="mt-6 text-gray-600">{description}</p>
-
-            <div className="mt-8 flex gap-4 flex-wrap">
-              <Link href="/book-now">
-                <Button variant="primary">Send Booking Request</Button>
-              </Link>
-
-              <a href="tel:+918056867468">
-                <Button variant="outlineBlue">Call Now</Button>
-              </a>
-            </div>
-          </div>
+          <AnimatedHeroContent title={title} description={description} />
 
           <div className="relative h-[380px] rounded-2xl overflow-hidden shadow-xl">
             <Image src={image} alt={title} fill className="object-cover" />
@@ -103,21 +88,21 @@ export default function RoutePage({
           </h2>
 
           <div className="grid md:grid-cols-3 gap-10 mt-16">
-            <div className="border rounded-xl p-8">
-              <h3 className="font-semibold text-lg">Sedan</h3>
+            <div className="border rounded-xl p-8 hover:shadow-lg duration-300">
+              <h3 className="font-semibold text-lg">Hatchback / Sedan</h3>
               <p className="text-gray-600 mt-3">
                 Comfortable for couples and small families.
               </p>
             </div>
 
-            <div className="border rounded-xl p-8">
+            <div className="border rounded-xl p-8  hover:shadow-lg duration-300">
               <h3 className="font-semibold text-lg">SUV</h3>
               <p className="text-gray-600 mt-3">
                 Spacious vehicles ideal for group travel.
               </p>
             </div>
 
-            <div className="border rounded-xl p-8">
+            <div className="border rounded-xl p-8  hover:shadow-lg duration-300">
               <h3 className="font-semibold text-lg">Luxury</h3>
               <p className="text-gray-600 mt-3">
                 Premium vehicles for comfortable travel.

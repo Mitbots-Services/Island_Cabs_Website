@@ -14,6 +14,7 @@ export default function BookingClient() {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [loading, setLoading] = useState(false);
+  const [dateValue, setDateValue] = useState("");
   const [status, setStatus] = useState<"success" | "error" | null>(null);
 
   const [errors, setErrors] = useState({
@@ -240,13 +241,25 @@ export default function BookingClient() {
                   <p className="text-red-500 text-xs mt-1">{errors.drop}</p>
                 )}
               </div>
-              <div className="flex-col">
-                <input
-                  type="date"
-                  name="date"
-                  required
-                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
-                />
+              <div className="flex flex-col w-full">
+                <div className="relative w-full">
+                  <input
+                    type="date"
+                    name="date"
+                    required
+                    min={new Date().toISOString().split("T")[0]}
+                    value={dateValue}
+                    onChange={(e) => setDateValue(e.target.value)}
+                    className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                  />
+
+                  {!dateValue && (
+                    <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm md:hidden">
+                      DD/MM/YYYY
+                    </span>
+                  )}
+                </div>
+
                 {errors.date && (
                   <p className="text-red-500 text-xs mt-1">{errors.date}</p>
                 )}
