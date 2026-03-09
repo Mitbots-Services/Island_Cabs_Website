@@ -82,7 +82,7 @@ export default function BookingClient() {
       newErrors.people = "Passenger count must be at least 1.";
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^[6-9]\d{9}$/;
+    const phoneRegex = /^(\+?[1-9]\d{6,14}|[6-9]\d{9})$/;
 
     if (!emailRegex.test(contact) && !phoneRegex.test(contact))
       newErrors.contact = "Enter a valid phone number or email.";
