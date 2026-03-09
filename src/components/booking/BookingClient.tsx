@@ -7,8 +7,18 @@ import { useRef, useState } from "react";
 
 export default function BookingClient() {
   const formRef = useRef<HTMLFormElement>(null);
+
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
+
+  const [errors, setErrors] = useState({
+    name: "",
+    pickup: "",
+    drop: "",
+    date: "",
+    people: "",
+    contact: "",
+  });
 
   const vehicles = [
     {
@@ -33,13 +43,57 @@ export default function BookingClient() {
     },
   ];
 
+  const validate = () => {
+    if (!formRef.current) return false;
+
+    const form = new FormData(formRef.current);
+
+    const name = (form.get("name") as string).trim();
+    const pickup = (form.get("pickup") as string).trim();
+    const drop = (form.get("drop") as string).trim();
+    const date = (form.get("date") as string).trim();
+    const people = Number(form.get("people"));
+    const contact = (form.get("contact") as string).trim();
+
+    const newErrors = {
+      name: "",
+      pickup: "",
+      drop: "",
+      date: "",
+      people: "",
+      contact: "",
+    };
+
+    if (name.length < 3) newErrors.name = "Please enter your full name.";
+
+    if (pickup.length < 2) newErrors.pickup = "Enter a valid pickup location.";
+
+    if (drop.length < 2) newErrors.drop = "Enter a valid destination.";
+
+    if (!date) newErrors.date = "Please select your travel date.";
+
+    if (!people || people < 1)
+      newErrors.people = "Passenger count must be at least 1.";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!emailRegex.test(contact) && !phoneRegex.test(contact))
+      newErrors.contact = "Enter a valid phone number or email.";
+
+    setErrors(newErrors);
+
+    return !Object.values(newErrors).some((v) => v !== "");
+  };
+
   const sendBooking = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!validate()) return;
     if (!formRef.current) return;
 
     setLoading(true);
-    setSuccess(false);
+    setStatus(null);
 
     try {
       await emailjs.sendForm(
@@ -50,9 +104,10 @@ export default function BookingClient() {
       );
 
       formRef.current.reset();
-      setSuccess(true);
+      setStatus("success");
     } catch (error) {
       console.error(error);
+      setStatus("error");
     }
 
     setLoading(false);
@@ -101,6 +156,7 @@ export default function BookingClient() {
 
           <a
             href="https://wa.me/918056867468"
+            target="_blank"
             className="group p-8 rounded-2xl bg-[var(--bg)] hover:bg-white border border-transparent hover:border-[#e5e7eb] shadow-sm hover:shadow-lg transition"
           >
             <div className="text-[var(--primary)] text-3xl font-bold">02</div>
@@ -141,12 +197,6 @@ export default function BookingClient() {
               onSubmit={sendBooking}
               className="mt-10 grid md:grid-cols-2 gap-6"
             >
-              <input
-                type="hidden"
-                name="time"
-                value={new Date().toLocaleString()}
-              />
-
               <div className="md:col-span-2">
                 <input
                   type="text"
@@ -155,39 +205,60 @@ export default function BookingClient() {
                   placeholder="Full Name"
                   className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                )}
               </div>
 
-              <input
-                type="text"
-                name="pickup"
-                required
-                placeholder="Pickup Location"
-                className="bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
-              />
+              <div className="flex-col">
+                <input
+                  type="text"
+                  name="pickup"
+                  required
+                  placeholder="Initial Point"
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.pickup && (
+                  <p className="text-red-500 text-xs mt-1">{errors.pickup}</p>
+                )}
+              </div>
 
-              <input
-                type="text"
-                name="drop"
-                required
-                placeholder="Drop Location"
-                className="bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
-              />
-
-              <input
-                type="date"
-                name="date"
-                required
-                className="bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
-              />
-
-              <input
-                type="number"
-                name="people"
-                required
-                min="1"
-                placeholder="Number of Passengers"
-                className="bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
-              />
+              <div className="flex-col">
+                <input
+                  type="text"
+                  name="drop"
+                  required
+                  placeholder="Final Destination"
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.drop && (
+                  <p className="text-red-500 text-xs mt-1">{errors.drop}</p>
+                )}
+              </div>
+              <div className="flex-col">
+                <input
+                  type="date"
+                  name="date"
+                  required
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.date && (
+                  <p className="text-red-500 text-xs mt-1">{errors.date}</p>
+                )}
+              </div>
+              <div className="flex-col">
+                <input
+                  type="number"
+                  name="people"
+                  required
+                  min="1"
+                  placeholder="Number of Passengers"
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.people && (
+                  <p className="text-red-500 text-xs mt-1">{errors.people}</p>
+                )}
+              </div>
 
               <div className="md:col-span-2">
                 <input
@@ -197,6 +268,9 @@ export default function BookingClient() {
                   placeholder="Phone Number or Email"
                   className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
                 />
+                {errors.contact && (
+                  <p className="text-red-500 text-xs mt-1">{errors.contact}</p>
+                )}
               </div>
 
               <div className="md:col-span-2">
@@ -212,14 +286,29 @@ export default function BookingClient() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-full primary border-2 border-[var(--primary)] text-white py-3 hover:bg-[var(--secondary)] hover:border-[var(--secondary)] transition"
+                  className="w-full rounded-full primary border-2 border-[var(--primary)] text-white py-3 hover:bg-[var(--secondary)] hover:border-[var(--secondary)] transition flex items-center justify-center gap-3"
                 >
-                  {loading ? "Submitting..." : "Confirm Booking"}
+                  {loading ? (
+                    <>
+                      <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                      <span className="text-sm">Sending...</span>
+                    </>
+                  ) : (
+                    "Confirm Booking"
+                  )}
                 </button>
 
-                {success && (
+                {status === "success" && (
                   <p className="text-green-600 text-center mt-4 text-sm">
-                    Booking request sent successfully!
+                    Booking request has been sent! Our team will contact you
+                    shortly.
+                  </p>
+                )}
+
+                {status === "error" && (
+                  <p className="text-red-600 text-center mt-4 text-sm">
+                    Looks like our message cab got stuck in traffic. Please try
+                    again in a moment.
                   </p>
                 )}
               </div>
@@ -256,7 +345,7 @@ export default function BookingClient() {
                 />
 
                 {/* CAPACITY BADGE */}
-                <div className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-white shadow-sm text-[var(--primary)]">
+                <div className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-white shadow-sm text-[var(--primary)] group-hover:bg-[var(--accent)] duration-300">
                   {vehicle.capacity}
                 </div>
               </div>

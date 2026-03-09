@@ -50,14 +50,13 @@ export default function Hero() {
             transition={{ delay: 0.5 }}
             className="mt-10 flex gap-4 items-center flex-wrap"
           >
+            <Link href="/cab-services">
+              <Button variant="primary">Explore Vehicles</Button>
+            </Link>
             <Link href="/book-now">
-              <Button variant="primary" className="px-8 py-3 shadow-md">
+              <Button variant="outlineBlue" className="px-8 py-3 shadow-md">
                 Book Taxi
               </Button>
-            </Link>
-
-            <Link href="/cab-services">
-              <Button variant="outlineBlue">Explore Vehicles</Button>
             </Link>
           </motion.div>
         </div>

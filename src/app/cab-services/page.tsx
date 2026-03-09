@@ -4,6 +4,7 @@ import { Car, Headphones, MessageSquare, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import CabServicesHero from "../../assets/CabServicesHero.webp";
 
 export const metadata: Metadata = {
   title: "Cab Services in Rameshwaram | Island Cabs",
@@ -53,7 +54,7 @@ export default function CabServicesPage() {
 
           <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/vehicles/Cabs.webp"
+              src={CabServicesHero}
               alt="Cab services in Rameshwaram"
               fill
               priority
@@ -256,11 +257,13 @@ export default function CabServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[#0D276D] text-white text-center">
+      <section className="py-24 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff] text-center">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold">Book Your Taxi Today</h2>
+          <h2 className="text-3xl font-bold text-[var(--text)]">
+            Book Your Taxi Today
+          </h2>
 
-          <p className="mt-6 text-white/80">
+          <p className="mt-6 text-[var(--text)]">
             Send a booking request or call us directly to arrange your travel.
           </p>
 
@@ -270,7 +273,7 @@ export default function CabServicesPage() {
             </Link>
 
             <a href="tel:+918056867468">
-              <Button variant="secondary">Call Now</Button>
+              <Button variant="outlineBlue">Call Now</Button>
             </a>
           </div>
         </div>

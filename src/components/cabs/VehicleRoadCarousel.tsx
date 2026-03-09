@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import HB from "../../assets/HatchbackVechicle.webp";
+import HB from "../../assets/HatchbackVehicle.webp";
 import Road from "../../assets/Road.webp";
 import Sedan from "../../assets/SedanVehicle.webp";
 import SUV from "../../assets/SUVVehicle.webp";

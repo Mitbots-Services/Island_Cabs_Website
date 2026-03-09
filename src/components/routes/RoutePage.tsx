@@ -55,8 +55,8 @@ export default function RoutePage({
 
           <p className="mt-6 text-gray-600">
             The distance for this journey is approximately <b>{distance}</b>.
-            The travel duration is usually around <b>{duration}</b>
-            depending on road and traffic conditions.
+            The travel duration is usually around <br />
+            <b>{duration}</b> depending on road and traffic conditions.
           </p>
         </div>
       </section>
@@ -215,13 +215,13 @@ export default function RoutePage({
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[#0D276D] text-white text-center">
+      <section className="py-24 bg-gradient-to-br text-[var(--text)] from-[#eef2ff] via-white to-[#e0e7ff] text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl font-bold">
             Book Your Taxi with Island Cabs
           </h2>
 
-          <p className="mt-6 text-white/80">
+          <p className="mt-6 text-[var(--text)]">
             Send a booking request or call us to confirm your travel.
           </p>
 
@@ -231,7 +231,7 @@ export default function RoutePage({
             </Link>
 
             <a href="tel:+918056867468">
-              <Button variant="secondary">Call Now</Button>
+              <Button variant="outlineBlue">Call Now</Button>
             </a>
           </div>
         </div>

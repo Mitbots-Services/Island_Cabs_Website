@@ -4,6 +4,7 @@ import FeatureCard from "@/components/ui/FeatureCard";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Mission from "../../assets/Mission.webp";
 
 export const metadata: Metadata = {
   title: "About Island Cabs | Rameshwaram Taxi Service",
@@ -80,7 +81,7 @@ export default function AboutPage() {
 
           <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/Hero/Company.jpg"
+              src={Mission}
               alt="Island Cabs taxi service"
               fill
               className="object-cover"
@@ -204,13 +205,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[#0D276D] text-white text-center">
+      <section className="py-24 text-center bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-3xl font-bold text-[var(--text)]">
             Book Your Taxi with Island Cabs
           </h2>
 
-          <p className="mt-6 text-white/80">
+          <p className="mt-6 text-[var(--text)]">
             Send a booking request or call us directly to arrange your trip.
           </p>
 
@@ -220,7 +221,7 @@ export default function AboutPage() {
             </Link>
 
             <a href="tel:+918056867468">
-              <Button variant="secondary">Call Now</Button>
+              <Button variant="outlineBlue">Call Now</Button>
             </a>
           </div>
         </div>

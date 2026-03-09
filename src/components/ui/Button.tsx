@@ -34,7 +34,8 @@ export default function Button({
     secondary:
       "secondary text-white hover:text-[var(--primary)] hover:bg-[var(--bg)]",
 
-    accent: "accent text-main hover:primary hover:text-white",
+    accent:
+      "accent text-main hover:primary hover:text-white border-2 border-[var(--accent)]",
 
     outline:
       "border-2 border-primary text-[var(--bg)] bg-transparent hover:border-[var(--primary)]",

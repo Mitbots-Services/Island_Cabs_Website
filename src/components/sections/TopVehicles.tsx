@@ -79,7 +79,7 @@ function VehicleCard({
           bg-[#000]/25
           rounded-full
           transition-all duration-300
-          group-hover:bg-[var(--primary)]
+          group-hover:bg-[var(--accent)]
           "
         >
           {capacity}

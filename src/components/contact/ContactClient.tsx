@@ -4,19 +4,60 @@ import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import ContactSupport from "../../assets/CustomerSupport.webp";
 
 export default function ContactClient() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
+
+  const [errors, setErrors] = useState({
+    name: "",
+    contact: "",
+    message: "",
+  });
+
+  const validate = () => {
+    if (!formRef.current) return false;
+
+    const form = new FormData(formRef.current);
+    const name = (form.get("name") as string).trim();
+    const contact = (form.get("contact") as string).trim();
+    const message = (form.get("message") as string).trim();
+
+    const newErrors = {
+      name: "",
+      contact: "",
+      message: "",
+    };
+
+    if (name.length < 3) {
+      newErrors.name = "Please enter your full name.";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!emailRegex.test(contact) && !phoneRegex.test(contact)) {
+      newErrors.contact = "Enter a valid phone number or email.";
+    }
+
+    if (message.length < 10) {
+      newErrors.message = "Message should be at least 10 characters.";
+    }
+
+    setErrors(newErrors);
+
+    return !newErrors.name && !newErrors.contact && !newErrors.message;
+  };
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
 
     setLoading(true);
-    setSuccess(false);
+    setStatus(null);
 
     try {
       await emailjs.sendForm(
@@ -27,9 +68,10 @@ export default function ContactClient() {
       );
 
       formRef.current.reset();
-      setSuccess(true);
+      setStatus("success");
     } catch (error) {
       console.error(error);
+      setStatus("error");
     }
 
     setLoading(false);
@@ -64,7 +106,7 @@ export default function ContactClient() {
       <section className="pt-32 pb-24 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <span className="text-[#D6A94E] font-semibold uppercase text-sm">
+            <span className="text-[#D6A94E] font-semibold uppercase text-sm tracking-wider">
               Contact Island Cabs
             </span>
 
@@ -80,7 +122,7 @@ export default function ContactClient() {
 
           <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/Hero/Contact-Us.jpg"
+              src={ContactSupport}
               alt="Contact Island Cabs"
               fill
               className="object-cover"
@@ -123,11 +165,12 @@ export default function ContactClient() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-white rounded-3xl shadow-xl p-10 md:p-12">
             <h3 className="text-2xl font-semibold text-[var(--text)]">
-              Send Booking Request
+              Send Message
             </h3>
 
             <p className="text-[var(--text)]/70 mt-2 text-sm">
-              Fill in your travel details and our team will contact you shortly.
+              Share your details and message, and our team will get back to you
+              shortly.
             </p>
 
             <form
@@ -136,49 +179,71 @@ export default function ContactClient() {
               className="mt-10 space-y-6"
             >
               <div className="grid md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  name="user_name"
-                  placeholder="Full Name"
-                  required
-                  className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
-                />
+                <div className="flex-col">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    required
+                    className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
+                  />
 
-                <input
-                  type="text"
-                  name="contact"
-                  placeholder="Phone Number or Email"
-                  required
-                  className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
-                />
+                  {errors.name && (
+                    <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                  )}
+                </div>
+                <div className="flex-col">
+                  <input
+                    type="text"
+                    name="contact"
+                    placeholder="Phone Number or Email"
+                    required
+                    className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
+                  />
+                  {errors.contact && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.contact}
+                    </p>
+                  )}
+                </div>
               </div>
-
-              <input
-                type="text"
-                name="location"
-                placeholder="Pickup Location"
-                className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
-              />
 
               <textarea
                 rows={4}
                 name="message"
-                placeholder="Tell us about your travel requirement"
+                placeholder="Enter your message…"
                 required
                 className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
               />
+              {errors.message && (
+                <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+              )}
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-full p-2 primary border-2 border-[var(--primary)] text-white hover:bg-[var(--secondary)] hover:border-[var(--secondary)] transition"
+                className="w-full rounded-full p-3 primary border-2 border-[var(--primary)] text-white hover:bg-[var(--secondary)] hover:border-[var(--secondary)] transition flex items-center justify-center gap-3"
               >
-                {loading ? "Sending..." : "Submit Booking Request"}
+                {loading ? (
+                  <>
+                    <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                    <span className="text-sm">Sending…</span>
+                  </>
+                ) : (
+                  "Submit Message"
+                )}
               </button>
 
-              {success && (
-                <p className="text-green-600 text-center text-sm">
-                  Message sent successfully!
+              {status === "success" && (
+                <p className="text-green-600 text-center text-sm mt-4">
+                  Your message has been sent! Our team will reach out soon.
+                </p>
+              )}
+
+              {status === "error" && (
+                <p className="text-red-600 text-center text-sm mt-4">
+                  Our cab hit a traffic jam sending your message. Please try
+                  again in a moment!
                 </p>
               )}
             </form>
