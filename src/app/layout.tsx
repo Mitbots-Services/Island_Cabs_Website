@@ -1,10 +1,11 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import type { Metadata } from "next";
+import { Cinzel, Manrope, Poppins } from "next/font/google";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://islandcabsindia.com"),
+  metadataBase: new URL("https://islandcabsrameshwaram.in"),
 
   title: {
     default: "Island Cabs | Taxi Service in Rameshwaram",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     title: "Island Cabs | Taxi Service in Rameshwaram",
     description:
       "Book reliable taxi services in Rameshwaram for temple tours, airport transfers and outstation travel across Tamil Nadu.",
-    url: "https://islandcabsindia.com",
+    url: "https://islandcabsrameshwaram.in",
     siteName: "Island Cabs",
     images: [
       {
@@ -51,9 +52,25 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://islandcabsindia.com",
+    canonical: "https://islandcabsrameshwaram.in",
   },
 };
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
+});
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["600"],
+  variable: "--font-cinzel",
+});
 
 export default function RootLayout({
   children,
@@ -64,11 +81,11 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Island Cabs",
-    url: "https://islandcabsindia.com",
-    logo: "https://islandcabsindia.com/images/Hero/IslandLogo.png",
+    url: "https://islandcabsrameshwaram.in",
+    logo: "https://islandcabsrameshwaram.in/images/Hero/IslandLogo.png",
     description:
       "Island Cabs is a professional taxi service in Rameshwaram offering temple tours, sightseeing and outstation taxi services across Tamil Nadu.",
-    telephone: "+91XXXXXXXXXX",
+    telephone: "+918056867468",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Rameshwaram",
@@ -86,14 +103,17 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Island Cabs",
-    url: "https://islandcabsindia.com",
-    logo: "https://islandcabsindia.com/images/Hero/IslandLogo.png",
+    url: "https://islandcabsrameshwaram.in",
+    logo: "https://islandcabsrameshwaram.in/images/Hero/IslandLogo.png",
     sameAs: [],
   };
 
   return (
-    <html lang="en">
-      <body className="bg-white text-black">
+    <html
+      lang="en"
+      className={`${manrope.variable} ${poppins.variable} ${cinzel.variable}`}
+    >
+      <body className="bg-white text-black font-body">
         {/* STRUCTURED DATA */}
         <script
           type="application/ld+json"

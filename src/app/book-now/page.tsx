@@ -22,7 +22,7 @@ const bookingSchema = {
     "@type": "ReserveAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://islandcabs.com/book-now",
+      urlTemplate: "https://islandcabsrameshwaram.in/book-now",
     },
     result: {
       "@type": "Reservation",

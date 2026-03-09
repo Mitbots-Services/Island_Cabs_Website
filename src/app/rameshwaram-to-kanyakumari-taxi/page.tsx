@@ -1,4 +1,5 @@
 import RoutePage from "@/components/routes/RoutePage";
+import Kanyakumari from "../../assets/Kanyakumari.webp";
 
 export default function Page() {
   return (
@@ -7,7 +8,7 @@ export default function Page() {
       description="Island Cabs offers comfortable taxi service from Rameshwaram to Kanyakumari for tourists exploring the southern tip of India."
       distance="310 km"
       duration="6 – 7 hours"
-      image="/images/routes/kanyakumari.jpg"
+      image={Kanyakumari}
       attractions={[
         "Vivekananda Rock Memorial",
         "Thiruvalluvar Statue",

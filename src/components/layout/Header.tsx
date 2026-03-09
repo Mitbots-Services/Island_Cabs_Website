@@ -10,7 +10,7 @@ export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-white/20 shadow-sm">
+    <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-[var(--bg)]/70 border-b border-[var(--bg)]/20 shadow-sm">
       <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-2">
@@ -21,7 +21,9 @@ export default function Header() {
             height={40}
           />
 
-          <span className="text-xl font-bold text-[#0D276D]">Island Cabs</span>
+          <span className="text-xl font-bold text-[var(--text)] font-logo">
+            Island Cabs
+          </span>
         </Link>
 
         {/* DESKTOP NAV */}
@@ -36,31 +38,78 @@ export default function Header() {
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
           >
-            <button className="flex items-center gap-1 hover:text-[#0D276D]">
+            <button className="flex items-center gap-1 hover:text-primary transition-colors">
               Cab Services
-              <ChevronDown size={16} />
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-300 ${
+                  servicesOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
             {servicesOpen && (
-              <div className="absolute top-full mt-4 w-64 bg-white rounded-lg shadow-lg border p-4 flex flex-col gap-3">
-                <Link
-                  href="/cab-services"
-                  className="font-semibold text-[#0D276D]"
+              <div className="absolute top-full left-0 pt-3 w-64 z-50">
+                <div
+                  className="
+        bg-white
+        rounded-xl
+        shadow-lg
+        border
+        flex flex-col
+        divide-y divide-gray-100
+        animate-[dropdown_0.2s_ease-out]
+        overflow-hidden
+        "
                 >
-                  All Cab Services
-                </Link>
+                  <Link
+                    href="/cab-services"
+                    className="
+                    px-4 py-3
+                    hover:bg-[#6482b9]/20
+                    text-[var(--primary)]
+                    transition
+                    "
+                  >
+                    All Cab Services
+                  </Link>
 
-                <Link href="/rameshwaram-to-madurai-taxi">
-                  Rameshwaram → Madurai Taxi
-                </Link>
+                  <Link
+                    href="/rameshwaram-to-madurai-taxi"
+                    className="
+                    px-4 py-3
+                    hover:bg-[#6482b9]/20
+                    hover:text-[var(--primary)]
+                    transition
+                    "
+                  >
+                    Rameshwaram → Madurai Taxi
+                  </Link>
 
-                <Link href="/rameshwaram-to-kanyakumari-taxi">
-                  Rameshwaram → Kanyakumari Taxi
-                </Link>
+                  <Link
+                    href="/rameshwaram-to-kanyakumari-taxi"
+                    className="
+                    px-4 py-3
+                    hover:bg-[#6482b9]/20
+                    hover:text-[var(--primary)]
+                    transition
+                    "
+                  >
+                    Rameshwaram → Kanyakumari Taxi
+                  </Link>
 
-                <Link href="/rameshwaram-to-dhanushkodi-taxi">
-                  Rameshwaram → Dhanushkodi Taxi
-                </Link>
+                  <Link
+                    href="/rameshwaram-to-dhanushkodi-taxi"
+                    className="
+                    px-4 py-3
+                    hover:bg-[#6482b9]/20
+                    hover:text-[var(--primary)]
+                    transition
+                    "
+                  >
+                    Rameshwaram → Dhanushkodi Taxi
+                  </Link>
+                </div>
               </div>
             )}
           </div>

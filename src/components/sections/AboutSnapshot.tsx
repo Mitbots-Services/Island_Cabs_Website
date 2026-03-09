@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import TrustedImg from "../../assets/Trusted.webp";
 import Button from "../ui/Button";
 
 export function AboutSnapshot() {
@@ -20,7 +21,7 @@ export function AboutSnapshot() {
             travel across Tamil Nadu.
           </p>
           <Link href="/about-us">
-            <Button className="mt-6 bg-[#0D276D] text-white px-6 py-3 rounded-lg hover:bg-[#6482B9]">
+            <Button variant="primary" className="mt-8">
               Learn More
             </Button>
           </Link>
@@ -30,7 +31,7 @@ export function AboutSnapshot() {
         <div className="relative h-[300px] w-full rounded-2xl overflow-hidden bg-[#F5F8FF] p-3 shadow-sm">
           <div className="relative w-full h-full rounded-xl overflow-hidden bg-white">
             <Image
-              src="/images/Hero/Trusted.png"
+              src={TrustedImg}
               alt="Trusted Travel Partner"
               fill
               className="object-cover"

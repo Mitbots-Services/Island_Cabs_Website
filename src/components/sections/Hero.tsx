@@ -1,9 +1,10 @@
 "use client";
 
-import OutlineButton from "@/components/ui/OutlineButton";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import HeroCar from "../../assets/Car.webp";
+import Button from "../ui/Button";
 
 export default function Hero() {
   return (
@@ -13,10 +14,7 @@ export default function Hero() {
       pt-32
       pb-24
       overflow-hidden
-      bg-gradient-to-br
-      from-[#f8fafc]
-      via-[#b7c6e2]
-      to-[#85a1f6]
+      bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]
       "
     >
       <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-12">
@@ -26,7 +24,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl font-bold text-black leading-tight"
+            className="text-4xl md:text-5xl font-bold font-heading text-black leading-tight"
           >
             Island Cabs
             <br />
@@ -41,26 +39,24 @@ export default function Hero() {
           >
             Island Cabs provides reliable taxi services in Rameshwaram for
             temple tours, local sightseeing and outstation trips to Madurai,
-            Kanyakumari and other destinations across South India. With over 6
-            years of experience, we ensure safe, comfortable and punctual travel
-            for tourists and pilgrims visiting Rameshwaram.
+            Kanyakumari and other destinations across South Tamil Nadu. With
+            over 6 years of experience, we ensure safe, comfortable and punctual
+            travel for tourists and pilgrims visiting Rameshwaram.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-10 flex gap-4 items-center"
+            className="mt-10 flex gap-4 items-center flex-wrap"
           >
-            <Link
-              href="/contact-us"
-              className="inline-block bg-[#0D276D] text-white px-8 py-3 rounded-full font-semibold shadow-md hover:bg-[#6482B9] transition-all duration-300"
-            >
-              Book Taxi
-            </Link>
-
             <Link href="/cab-services">
-              <OutlineButton>Explore Vehicles</OutlineButton>
+              <Button variant="primary">Explore Vehicles</Button>
+            </Link>
+            <Link href="/book-now">
+              <Button variant="outlineBlue" className="px-8 py-3 shadow-md">
+                Book Taxi
+              </Button>
             </Link>
           </motion.div>
         </div>
@@ -74,12 +70,12 @@ export default function Hero() {
         >
           <div className="w-[180%] md:w-[200%] relative z-10">
             <Image
-              src="/images/Hero/Car.png"
+              src={HeroCar}
               alt="Island Cabs taxi service in Rameshwaram for temple tours and Madurai travel"
               width={1900}
               height={1200}
               priority
-              className="w-full h-auto drop-shadow-[0_60px_80px_rgba(0,0,0,0.35)]"
+              className="w-full h-auto"
             />
           </div>
         </motion.div>

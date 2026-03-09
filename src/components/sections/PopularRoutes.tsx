@@ -3,52 +3,55 @@ import Link from "next/link";
 export default function PopularRoutes() {
   const routes = [
     {
-      title: "Rameshwaram to Madurai Taxi",
+      title: "Rameshwaram → Madurai Taxi",
       description:
-        "Comfortable taxi service from Rameshwaram to Madurai for temple visits, airport transfers and city travel.",
+        "Comfortable taxi service for temple visits, airport transfers and city travel.",
       link: "/rameshwaram-to-madurai-taxi",
     },
     {
-      title: "Rameshwaram to Kanyakumari Taxi",
+      title: "Rameshwaram → Kanyakumari Taxi",
       description:
-        "Travel from Rameshwaram to Kanyakumari with experienced drivers and well maintained vehicles.",
+        "Travel with experienced drivers and well maintained vehicles.",
       link: "/rameshwaram-to-kanyakumari-taxi",
     },
     {
-      title: "Rameshwaram to Dhanushkodi Taxi",
+      title: "Rameshwaram → Dhanushkodi Taxi",
       description:
-        "Book a taxi to explore Dhanushkodi beach and nearby attractions with Island Cabs.",
+        "Explore Dhanushkodi beach and nearby attractions comfortably.",
       link: "/rameshwaram-to-dhanushkodi-taxi",
     },
   ];
 
   return (
-    <section className="py-24 bg-white text-center">
-      <h2 className="text-4xl font-bold text-[#111827]">
-        Popular Taxi Routes from Rameshwaram
-      </h2>
+    <section className="py-24 bg-white">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold text-[var(--text)]">
+          Popular Taxi Routes from Rameshwaram
+        </h2>
 
-      <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-        Island Cabs offers reliable taxi services from Rameshwaram to major
-        destinations across Tamil Nadu including Madurai, Kanyakumari and
-        Dhanushkodi.
-      </p>
+        <p className="mt-4 text-[var(--text)]/70">
+          Reliable taxi services from Rameshwaram to major destinations across
+          Tamil Nadu.
+        </p>
+      </div>
 
-      <div className="mt-16 grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto mt-16 px-6 divide-y divide-[color-mix(in_srgb,var(--secondary)_25%,transparent)]">
         {routes.map((route, i) => (
           <div
             key={i}
-            className="bg-[#F5F8FF] p-8 rounded-2xl shadow-sm hover:shadow-lg transition"
+            className="py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
           >
-            <h3 className="text-xl font-semibold text-[#0D276D]">
-              {route.title}
-            </h3>
+            <div className="text-left">
+              <h3 className="text-xl font-semibold text-[var(--primary)]">
+                {route.title}
+              </h3>
 
-            <p className="mt-3 text-gray-600">{route.description}</p>
+              <p className="text-[var(--text)]/70 mt-1">{route.description}</p>
+            </div>
 
             <Link
               href={route.link}
-              className="inline-block mt-6 text-sm font-semibold text-[#0D276D] hover:underline"
+              className="text-sm font-semibold text-[var(--primary)] hover:text-[var(--accent)] transition"
             >
               View Details →
             </Link>

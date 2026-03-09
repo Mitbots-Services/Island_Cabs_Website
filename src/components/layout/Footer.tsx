@@ -19,10 +19,10 @@ export default function Footer() {
           </p>
 
           <a
-            href="tel:+91XXXXXXXXXX"
+            href="tel:+918056867468"
             className="block mt-2 text-white font-medium"
           >
-            📞 +91 XXXXX XXXXX
+            📞 +91 80568 67468
           </a>
         </div>
 
@@ -90,13 +90,25 @@ export default function Footer() {
       {/* BOTTOM STRIP */}
       <div className="border-t border-white/20">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-white/70 text-sm">
-          <p>© 2026 Island Cabs. All Rights Reserved.</p>
+          <div className="text-center md:text-left">
+            <p>© 2026 Island Cabs. All Rights Reserved.</p>
+
+            <p className="text-white/60 text-xs mt-1">
+              Designed & Developed by{" "}
+              <a
+                href="https://mitbots.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-white transition"
+              >
+                Mitbots
+              </a>
+            </p>
+          </div>
 
           <div className="flex gap-6">
             <Link href="/terms-and-conditions">Terms</Link>
-
             <Link href="/privacy-policy">Privacy</Link>
-
             <Link href="/cancellation-policy">Cancellation</Link>
           </div>
         </div>

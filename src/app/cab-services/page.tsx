@@ -1,7 +1,10 @@
+import VehicleRoadCarousel from "@/components/cabs/VehicleRoadCarousel";
+import Button from "@/components/ui/Button";
 import { Car, Headphones, MessageSquare, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import CabServicesHero from "../../assets/CabServicesHero.webp";
 
 export const metadata: Metadata = {
   title: "Cab Services in Rameshwaram | Island Cabs",
@@ -13,14 +16,14 @@ export default function CabServicesPage() {
   return (
     <main className="bg-[#F8FAFC]">
       {/* HERO */}
-      <section className="pt-32 pb-24 bg-gradient-to-br from-[#f8fafc] via-[#b7c6e2] to-[#85a1f6]">
+      <section className="pt-32 pb-24 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-[#D6A94E] font-semibold uppercase tracking-wider text-sm">
               Island Cabs
             </span>
 
-            <h1 className="mt-4 text-4xl md:text-5xl font-bold text-[#111827] leading-tight">
+            <h1 className="mt-4 text-4xl md:text-5xl font-bold font-heading text-[#111827] leading-tight">
               Cab Services in Rameshwaram
             </h1>
 
@@ -37,26 +40,21 @@ export default function CabServicesPage() {
               <span>✔ Outstation Travel</span>
             </div>
 
-            <div className="mt-10 flex gap-6">
-              <Link
-                href="/contact-us"
-                className="bg-[#0D276D] text-white px-8 py-3 rounded-full font-semibold"
-              >
-                Send Booking Request
+            {/* CTA */}
+            <div className="mt-10 flex gap-6 flex-wrap">
+              <Link href="/contact-us">
+                <Button variant="primary">Send Booking Request</Button>
               </Link>
 
-              <a
-                href="tel:+91XXXXXXXXXX"
-                className="border border-[#0D276D] px-8 py-3 rounded-full font-semibold text-[#0D276D]"
-              >
-                Call Now
+              <a href="tel:+918056867468">
+                <Button variant="outlineBlue">Call Now</Button>
               </a>
             </div>
           </div>
 
           <div className="relative h-[420px] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/vehicles/Cabs.webp"
+              src={CabServicesHero}
               alt="Cab services in Rameshwaram"
               fill
               priority
@@ -69,35 +67,59 @@ export default function CabServicesPage() {
       {/* SERVICES */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-[#111827]">
+          <h2 className="text-4xl md:text-4xl font-bold text-[var(--text)]">
             Our Cab Services
           </h2>
 
-          <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-6 text-[var(--text)]/70 max-w-2xl mx-auto">
             We provide flexible transportation services for tourists, pilgrims
             and business travelers across Tamil Nadu.
           </p>
 
           <div className="grid md:grid-cols-3 gap-10 mt-16">
-            <div className="bg-[#F8FAFC] p-10 rounded-2xl shadow-sm">
-              <h3 className="text-xl font-semibold">Temple Tours</h3>
-              <p className="mt-4 text-gray-600">
+            {/* SERVICE */}
+            <div className="relative p-10 rounded-2xl bg-[var(--bg)] border border-[color-mix(in_srgb,var(--secondary)_25%,transparent)] text-left hover:-translate-y-1 hover:shadow-lg transition overflow-hidden">
+              <span className="absolute top-6 right-6 text-5xl font-bold text-[#6482b9]/30">
+                01
+              </span>
+
+              <h3 className="text-xl font-semibold text-[var(--text)]">
+                Temple Tours
+              </h3>
+
+              <p className="mt-4 text-[var(--text)]/70">
                 Visit Ramanathaswamy Temple and nearby spiritual destinations
                 comfortably with our dedicated temple tour taxis.
               </p>
             </div>
 
-            <div className="bg-[#F8FAFC] p-10 rounded-2xl shadow-sm">
-              <h3 className="text-xl font-semibold">Outstation Travel</h3>
-              <p className="mt-4 text-gray-600">
+            {/* SERVICE */}
+            <div className="relative p-10 rounded-2xl bg-[var(--bg)] border border-[color-mix(in_srgb,var(--secondary)_25%,transparent)] text-left hover:-translate-y-1 hover:shadow-lg transition overflow-hidden">
+              <span className="absolute top-6 right-6 text-5xl font-bold text-[#6482b9]/30">
+                02
+              </span>
+
+              <h3 className="text-xl font-semibold text-[var(--text)]">
+                Outstation Travel
+              </h3>
+
+              <p className="mt-4 text-[var(--text)]/70">
                 Travel from Rameshwaram to Madurai, Kanyakumari and other cities
                 with reliable long distance taxi services.
               </p>
             </div>
 
-            <div className="bg-[#F8FAFC] p-10 rounded-2xl shadow-sm">
-              <h3 className="text-xl font-semibold">Airport Transfers</h3>
-              <p className="mt-4 text-gray-600">
+            {/* SERVICE */}
+            <div className="relative p-10 rounded-2xl bg-[var(--bg)] border border-[color-mix(in_srgb,var(--secondary)_25%,transparent)] text-left hover:-translate-y-1 hover:shadow-lg transition overflow-hidden">
+              <span className="absolute top-6 right-6 text-5xl font-bold text-[#6482b9]/30">
+                03
+              </span>
+
+              <h3 className="text-xl font-semibold text-[var(--text)]">
+                Airport Transfers
+              </h3>
+
+              <p className="mt-4 text-[var(--text)]/70">
                 Convenient airport taxi services to Madurai Airport with
                 punctual drivers and comfortable vehicles.
               </p>
@@ -107,60 +129,82 @@ export default function CabServicesPage() {
       </section>
 
       {/* VEHICLES */}
-      <section className="py-24 bg-[#F8FAFC]">
+      {/* <section className="py-24 bg-[var(--bg)]">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-[#111827]">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-[var(--text)]">
             Our Vehicle Fleet
           </h2>
 
-          <div className="mt-16 grid md:grid-cols-4 gap-10">
+          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
                 name: "Sedan",
                 image: "/images/vehicles/Sedan.jpeg",
-                passengers: "Up to 4 Passengers",
+                passengers: "4 Seats",
               },
               {
                 name: "SUV",
                 image: "/images/vehicles/Suv.jpeg",
-                passengers: "Up to 6 Passengers",
+                passengers: "6 Seats",
               },
               {
                 name: "Luxury Car",
                 image: "/images/vehicles/Luxury.jpeg",
-                passengers: "Premium Comfort",
+                passengers: "Premium",
               },
               {
                 name: "Tempo Traveller",
                 image: "/images/vehicles/TempoTraveller.jpeg",
-                passengers: "Group Travel",
+                passengers: "12+ Seats",
               },
             ].map((vehicle, i) => (
               <div
                 key={i}
-                className="rounded-2xl overflow-hidden shadow-md bg-white"
+                className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition"
               >
-                <div className="relative h-56">
+                <div className="relative h-64 overflow-hidden">
+                  <div
+                    className="
+              absolute top-4 left-4 z-10
+              px-3 py-1 text-xs font-semibold
+              text-white
+              primary
+              rounded-full
+              transition-all duration-300
+              group-hover:rounded-lg
+              "
+                  >
+                    {vehicle.passengers}
+                  </div>
+
                   <Image
                     src={vehicle.image}
                     alt={vehicle.name}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                </div>
 
-                <div className="p-6 text-left">
-                  <h3 className="text-lg font-semibold">{vehicle.name}</h3>
-
-                  <p className="text-gray-600 text-sm mt-2">
-                    {vehicle.passengers}
-                  </p>
+                  <div
+                    className="
+              absolute bottom-4 left-4
+              bg-white
+              text-[var(--text)]
+              text-sm
+              font-semibold
+              px-4 py-1.5
+              rounded-full
+              shadow-sm
+              "
+                  >
+                    {vehicle.name}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+      <VehicleRoadCarousel />
 
       {/* WHY CHOOSE */}
       <section className="py-24 bg-white">
@@ -213,27 +257,23 @@ export default function CabServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-[#0D276D] text-white text-center">
+      <section className="py-24 bg-gradient-to-br from-[#eef2ff] via-white to-[#e0e7ff] text-center">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-bold">Book Your Taxi Today</h2>
+          <h2 className="text-3xl font-bold text-[var(--text)]">
+            Book Your Taxi Today
+          </h2>
 
-          <p className="mt-6 text-white/80">
+          <p className="mt-6 text-[var(--text)]">
             Send a booking request or call us directly to arrange your travel.
           </p>
 
-          <div className="mt-10 flex justify-center gap-6">
-            <Link
-              href="/contact-us"
-              className="bg-white text-[#0D276D] px-8 py-3 rounded-full font-semibold"
-            >
-              Send Booking Request
+          <div className="mt-10 flex justify-center gap-6 flex-wrap">
+            <Link href="/book-now">
+              <Button variant="accent">Send Booking Request</Button>
             </Link>
 
-            <a
-              href="tel:+91XXXXXXXXXX"
-              className="border border-white px-8 py-3 rounded-full"
-            >
-              Call Now
+            <a href="tel:+918056867468">
+              <Button variant="outlineBlue">Call Now</Button>
             </a>
           </div>
         </div>

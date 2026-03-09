@@ -7,16 +7,93 @@ import { useRef, useState } from "react";
 
 export default function BookingClient() {
   const formRef = useRef<HTMLFormElement>(null);
+
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
+
+  const [errors, setErrors] = useState({
+    name: "",
+    pickup: "",
+    drop: "",
+    date: "",
+    people: "",
+    contact: "",
+  });
+
+  const vehicles = [
+    {
+      name: "Sedan",
+      image: "/images/vehicles/Sedan.jpeg",
+      capacity: "Up to 4 passengers",
+    },
+    {
+      name: "SUV",
+      image: "/images/vehicles/Suv.jpeg",
+      capacity: "Up to 6 passengers",
+    },
+    {
+      name: "Luxury",
+      image: "/images/vehicles/Luxury.jpeg",
+      capacity: "Premium comfort",
+    },
+    {
+      name: "Tempo Traveller",
+      image: "/images/vehicles/TempoTraveller.jpeg",
+      capacity: "Group travel",
+    },
+  ];
+
+  const validate = () => {
+    if (!formRef.current) return false;
+
+    const form = new FormData(formRef.current);
+
+    const name = (form.get("name") as string).trim();
+    const pickup = (form.get("pickup") as string).trim();
+    const drop = (form.get("drop") as string).trim();
+    const date = (form.get("date") as string).trim();
+    const people = Number(form.get("people"));
+    const contact = (form.get("contact") as string).trim();
+
+    const newErrors = {
+      name: "",
+      pickup: "",
+      drop: "",
+      date: "",
+      people: "",
+      contact: "",
+    };
+
+    if (name.length < 3) newErrors.name = "Please enter your full name.";
+
+    if (pickup.length < 2) newErrors.pickup = "Enter a valid pickup location.";
+
+    if (drop.length < 2) newErrors.drop = "Enter a valid destination.";
+
+    if (!date) newErrors.date = "Please select your travel date.";
+
+    if (!people || people < 1)
+      newErrors.people = "Passenger count must be at least 1.";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!emailRegex.test(contact) && !phoneRegex.test(contact))
+      newErrors.contact = "Enter a valid phone number or email.";
+
+    setErrors(newErrors);
+
+    return !Object.values(newErrors).some((v) => v !== "");
+  };
 
   const sendBooking = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!validate()) return;
     if (!formRef.current) return;
 
     setLoading(true);
-    setSuccess(false);
+    setStatus(null);
 
     try {
       await emailjs.sendForm(
@@ -27,9 +104,10 @@ export default function BookingClient() {
       );
 
       formRef.current.reset();
-      setSuccess(true);
+      setStatus("success");
     } catch (error) {
       console.error(error);
+      setStatus("error");
     }
 
     setLoading(false);
@@ -38,18 +116,18 @@ export default function BookingClient() {
   return (
     <main className="bg-[#F8FAFC]">
       {/* HERO */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-[#f8fafc] via-[#b7c6e2] to-[#85a1f6]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <section className="pt-32 pb-24 bg-gradient-to-br from-[#f8fafc] via-[#b7c6e2] to-[#85a1f6]">
+        <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-[#111827]"
+            className="text-4xl md:text-5xl font-heading font-bold text-[var(--text)]"
           >
             Book Your Taxi in Rameshwaram
           </motion.h1>
 
-          <p className="mt-6 text-gray-700 max-w-2xl mx-auto text-lg">
+          <p className="mt-6 text-[var(--text)]/70 max-w-2xl mx-auto text-lg">
             Submit your trip details and the Island Cabs team will contact you
             shortly to confirm your taxi booking.
           </p>
@@ -57,89 +135,130 @@ export default function BookingClient() {
       </section>
 
       {/* QUICK CONTACT */}
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-6 text-center">
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-6">
           <a
-            href="tel:+91XXXXXXXXXX"
-            className="p-8 bg-[#F8FAFC] rounded-xl shadow-sm hover:shadow-md"
+            href="tel:+918056867468"
+            className="group p-8 rounded-2xl bg-[var(--bg)] hover:bg-white border border-transparent hover:border-[#e5e7eb] shadow-sm hover:shadow-lg transition"
           >
-            <h3 className="font-semibold text-lg">
-              📞 Call for Instant Booking
+            <div className="text-[var(--primary)] text-3xl font-bold">01</div>
+
+            <h3 className="mt-4 font-semibold text-lg text-[var(--text)]">
+              Call for Instant Booking
             </h3>
-            <p className="text-gray-600 mt-2">Speak directly with our team</p>
+
+            <p className="text-[var(--text)]/70 text-sm mt-2">
+              Speak directly with our team
+            </p>
+
+            <div className="h-[2px] w-0 group-hover:w-10 bg-[var(--primary)] mt-6 transition-all" />
           </a>
 
           <a
-            href="https://wa.me/91XXXXXXXXXX"
-            className="p-8 bg-[#F8FAFC] rounded-xl shadow-sm hover:shadow-md"
+            href="https://wa.me/918056867468"
+            target="_blank"
+            className="group p-8 rounded-2xl bg-[var(--bg)] hover:bg-white border border-transparent hover:border-[#e5e7eb] shadow-sm hover:shadow-lg transition"
           >
-            <h3 className="font-semibold text-lg">💬 Book via WhatsApp</h3>
-            <p className="text-gray-600 mt-2">Quick responses from our team</p>
+            <div className="text-[var(--primary)] text-3xl font-bold">02</div>
+
+            <h3 className="mt-4 font-semibold text-lg text-[var(--text)]">
+              Book via WhatsApp
+            </h3>
+
+            <p className="text-[var(--text)]/70 text-sm mt-2">
+              Quick responses from our team
+            </p>
+
+            <div className="h-[2px] w-0 group-hover:w-10 bg-[var(--primary)] mt-6 transition-all" />
           </a>
         </div>
       </section>
 
       {/* BOOKING FORM */}
-      <section className="pb-24">
+      <section className="pb-24 pt-10 bg-[var(--bg)]">
         <div className="max-w-4xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl shadow-xl p-8 md:p-12"
+            className="bg-white rounded-3xl shadow-xl p-10 md:p-12"
           >
+            <h3 className="text-2xl font-semibold text-[var(--text)]">
+              Booking Details
+            </h3>
+
+            <p className="text-[var(--text)]/70 text-sm mt-2">
+              Tell us about your trip and we’ll arrange the best vehicle for
+              you.
+            </p>
+
             <form
               ref={formRef}
               onSubmit={sendBooking}
-              className="grid md:grid-cols-2 gap-6"
+              className="mt-10 grid md:grid-cols-2 gap-6"
             >
-              <input
-                type="hidden"
-                name="time"
-                value={new Date().toLocaleString()}
-              />
-
               <div className="md:col-span-2">
                 <input
                   type="text"
                   name="name"
                   required
                   placeholder="Full Name"
-                  className="w-full px-4 py-3 border rounded-lg"
+                  className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none transition"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                )}
               </div>
 
-              <input
-                type="text"
-                name="pickup"
-                required
-                placeholder="Pickup Location"
-                className="px-4 py-3 border rounded-lg"
-              />
+              <div className="flex-col">
+                <input
+                  type="text"
+                  name="pickup"
+                  required
+                  placeholder="Initial Point"
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.pickup && (
+                  <p className="text-red-500 text-xs mt-1">{errors.pickup}</p>
+                )}
+              </div>
 
-              <input
-                type="text"
-                name="drop"
-                required
-                placeholder="Drop Location"
-                className="px-4 py-3 border rounded-lg"
-              />
-
-              <input
-                type="date"
-                name="date"
-                required
-                className="px-4 py-3 border rounded-lg"
-              />
-
-              <input
-                type="number"
-                name="people"
-                required
-                min="1"
-                placeholder="Number of Passengers"
-                className="px-4 py-3 border rounded-lg"
-              />
+              <div className="flex-col">
+                <input
+                  type="text"
+                  name="drop"
+                  required
+                  placeholder="Final Destination"
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.drop && (
+                  <p className="text-red-500 text-xs mt-1">{errors.drop}</p>
+                )}
+              </div>
+              <div className="flex-col">
+                <input
+                  type="date"
+                  name="date"
+                  required
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.date && (
+                  <p className="text-red-500 text-xs mt-1">{errors.date}</p>
+                )}
+              </div>
+              <div className="flex-col">
+                <input
+                  type="number"
+                  name="people"
+                  required
+                  min="1"
+                  placeholder="Number of Passengers"
+                  className="bg-[var(--bg)] w-full border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
+                />
+                {errors.people && (
+                  <p className="text-red-500 text-xs mt-1">{errors.people}</p>
+                )}
+              </div>
 
               <div className="md:col-span-2">
                 <input
@@ -147,8 +266,11 @@ export default function BookingClient() {
                   name="contact"
                   required
                   placeholder="Phone Number or Email"
-                  className="w-full px-4 py-3 border rounded-lg"
+                  className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
                 />
+                {errors.contact && (
+                  <p className="text-red-500 text-xs mt-1">{errors.contact}</p>
+                )}
               </div>
 
               <div className="md:col-span-2">
@@ -156,7 +278,7 @@ export default function BookingClient() {
                   name="message"
                   rows={4}
                   placeholder="Additional details"
-                  className="w-full px-4 py-3 border rounded-lg"
+                  className="w-full bg-[var(--bg)] border border-transparent focus:border-[var(--primary)] rounded-xl px-4 py-3 outline-none"
                 />
               </div>
 
@@ -164,14 +286,29 @@ export default function BookingClient() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-[#0D276D] text-white py-4 rounded-lg font-semibold"
+                  className="w-full rounded-full primary border-2 border-[var(--primary)] text-white py-3 hover:bg-[var(--secondary)] hover:border-[var(--secondary)] transition flex items-center justify-center gap-3"
                 >
-                  {loading ? "Submitting..." : "Confirm Booking"}
+                  {loading ? (
+                    <>
+                      <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                      <span className="text-sm">Sending...</span>
+                    </>
+                  ) : (
+                    "Confirm Booking"
+                  )}
                 </button>
 
-                {success && (
-                  <p className="text-green-600 text-center mt-4">
-                    Booking request sent successfully!
+                {status === "success" && (
+                  <p className="text-green-600 text-center mt-4 text-sm">
+                    Booking request has been sent! Our team will contact you
+                    shortly.
+                  </p>
+                )}
+
+                {status === "error" && (
+                  <p className="text-red-600 text-center mt-4 text-sm">
+                    Looks like our message cab got stuck in traffic. Please try
+                    again in a moment.
                   </p>
                 )}
               </div>
@@ -181,57 +318,54 @@ export default function BookingClient() {
       </section>
 
       {/* VEHICLE OPTIONS */}
-      <section className="pb-24">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#111827]">
-            Choose Your Vehicle
-          </h2>
+      <section className="pb-24 mx-10">
+        <div className="mt-16 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {vehicles.map((vehicle, i) => (
+            <div
+              key={i}
+              className="
+              group
+              relative
+              bg-white
+              rounded-2xl
+              border border-[#e5e7eb]
+              overflow-hidden
+              hover:shadow-xl
+              transition-all
+              duration-300
+              "
+            >
+              {/* IMAGE */}
+              <div className="relative h-48 bg-[var(--bg)] overflow-hidden">
+                <Image
+                  src={vehicle.image}
+                  alt={vehicle.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
 
-          <div className="mt-16 grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              {
-                name: "Sedan",
-                image: "/images/vehicles/Sedan.jpeg",
-                capacity: "Up to 4 passengers",
-              },
-              {
-                name: "SUV",
-                image: "/images/vehicles/Suv.jpeg",
-                capacity: "Up to 6 passengers",
-              },
-              {
-                name: "Luxury",
-                image: "/images/vehicles/Luxury.jpeg",
-                capacity: "Premium comfort",
-              },
-              {
-                name: "Tempo Traveller",
-                image: "/images/vehicles/TempoTraveller.jpeg",
-                capacity: "Group travel",
-              },
-            ].map((vehicle, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-2xl shadow-md overflow-hidden"
-              >
-                <div className="relative h-56">
-                  <Image
-                    src={vehicle.image}
-                    alt={vehicle.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="p-6 text-left">
-                  <h3 className="font-semibold text-lg">{vehicle.name}</h3>
-                  <p className="text-gray-600 text-sm mt-2">
-                    {vehicle.capacity}
-                  </p>
+                {/* CAPACITY BADGE */}
+                <div className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-white shadow-sm text-[var(--primary)] group-hover:bg-[var(--accent)] duration-300">
+                  {vehicle.capacity}
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* CONTENT */}
+              <div className="p-6 text-center">
+                <h3 className="text-lg font-semibold text-[var(--text)]">
+                  {vehicle.name}
+                </h3>
+
+                {/* subtle divider */}
+                <div className="mt-4 h-[1px] bg-[#eef2f6]" />
+
+                {/* hover indicator */}
+                <p className="mt-4 text-sm text-[var(--primary)] transition">
+                  Available for booking
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>
