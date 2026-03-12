@@ -6,7 +6,7 @@ import Script from "next/script";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://islandcabsrameshwaram.in"),
+  metadataBase: new URL("https://www.islandcabsrameshwaram.in"),
 
   title: {
     default: "Island Cabs | Taxi Service in Rameshwaram",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Island Cabs | Taxi Service in Rameshwaram",
     description:
       "Book reliable taxi services in Rameshwaram for temple tours, airport transfers and outstation travel across Tamil Nadu.",
-    url: "https://islandcabsrameshwaram.in",
+    url: "https://www.islandcabsrameshwaram.in",
     siteName: "Island Cabs",
     images: [
       {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://islandcabsrameshwaram.in",
+    canonical: "https://www.islandcabsrameshwaram.in",
   },
 };
 
@@ -84,8 +84,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Island Cabs",
-    url: "https://islandcabsrameshwaram.in",
-    logo: "https://islandcabsrameshwaram.in/icon.png",
+    url: "https://www.islandcabsrameshwaram.in",
+    logo: "https://www.islandcabsrameshwaram.in/icon.png",
     description:
       "Island Cabs is a professional taxi service in Rameshwaram offering temple tours, sightseeing and outstation taxi services across Tamil Nadu.",
     telephone: "+918056867468",
@@ -106,8 +106,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Island Cabs",
-    url: "https://islandcabsrameshwaram.in",
-    logo: "https://islandcabsrameshwaram.in/icon.png",
+    url: "https://www.islandcabsrameshwaram.in",
+    logo: "https://www.islandcabsrameshwaram.in/icon.png",
     sameAs: [],
   };
 
